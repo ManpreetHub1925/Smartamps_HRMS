@@ -1,0 +1,1480 @@
+
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light" data-sidebar="indigo" data-color="primary" data-topbar="bluegradient" data-layout="modern" data-topbarcolor="white" data-card="shadow" data-size="default" data-width="fluid" data-loader="enable">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+	<title>SmartAmps Admin Dashboard</title>
+
+
+    {% include 'user/head_foot/style.html' %}
+
+
+<body>
+
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+
+    {% include 'user/head_foot/header.html' %}
+
+    <!-- Page Wrapper -->
+
+    <div class="page-wrapper">
+        <div class="content">
+
+            <!-- Breadcrumb -->
+            <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+                <div class="my-auto mb-2">
+                    <h2 class="mb-1">Companies</h2>
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="{{ url_for('user.dashboard')}}"><i class="ti ti-smart-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                Application
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Companies List</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+                    <div class="me-2 mb-2">
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                                <i class="ti ti-file-export me-1"></i>Export
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-3">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-xls me-1"></i>Export as Excel </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#add_company" class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Add Company</a>
+                    </div>
+                    <div class="ms-2 head-icons">
+                        <a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Collapse" id="collapse-header">
+                            <i class="ti ti-chevrons-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /Breadcrumb -->
+
+            <div class="row">
+
+                <!-- Total Companies -->
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="card flex-fill">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center overflow-hidden">
+                                <span class="avatar avatar-lg bg-primary flex-shrink-0">
+                                    <i class="ti ti-building fs-16"></i>
+                                </span>
+                                <div class="ms-2 overflow-hidden">
+                                    <p class="fs-12 fw-medium mb-1 text-truncate">Total Companies</p>
+                                    <h4>950</h4>
+                                </div>
+                            </div>
+                            <div id="total-chart" style="min-height: 31.0559px;"><div id="apexchartsu7d952g7" class="apexcharts-canvas apexchartsu7d952g7 apexcharts-theme-" style="width: 50px; height: 31.0559px;"><svg id="SvgjsSvg1048" width="50" height="31.05590062111801" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)"><foreignObject x="0" y="0" width="50" height="31.05590062111801"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 15.528px;"></div><style type="text/css">
+      .apexcharts-flip-y {
+        transform: scaleY(-1) translateY(-100%);
+        transform-origin: top;
+        transform-box: fill-box;
+      }
+      .apexcharts-flip-x {
+        transform: scaleX(-1);
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      .apexcharts-legend {
+        display: flex;
+        overflow: auto;
+        padding: 0 10px;
+      }
+      .apexcharts-legend.apx-legend-position-bottom, .apexcharts-legend.apx-legend-position-top {
+        flex-wrap: wrap
+      }
+      .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        flex-direction: column;
+        bottom: 0;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left, .apexcharts-legend.apx-legend-position-top.apexcharts-align-left, .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        justify-content: flex-start;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
+        justify-content: center;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-right, .apexcharts-legend.apx-legend-position-top.apexcharts-align-right {
+        justify-content: flex-end;
+      }
+      .apexcharts-legend-series {
+        cursor: pointer;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+      }
+      .apexcharts-legend-text {
+        position: relative;
+        font-size: 14px;
+      }
+      .apexcharts-legend-text *, .apexcharts-legend-marker * {
+        pointer-events: none;
+      }
+      .apexcharts-legend-marker {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 1px;
+      }
+
+      .apexcharts-legend-series.apexcharts-no-click {
+        cursor: auto;
+      }
+      .apexcharts-legend .apexcharts-hidden-zero-series, .apexcharts-legend .apexcharts-hidden-null-series {
+        display: none !important;
+      }
+      .apexcharts-inactive-legend {
+        opacity: 0.45;
+      }</style></foreignObject><rect id="SvgjsRect1053" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1058" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1059" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1090" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1050" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1.25)"><defs id="SvgjsDefs1049"><clipPath id="gridRectMasku7d952g7"><rect id="SvgjsRect1055" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectBarMasku7d952g7"><rect id="SvgjsRect1056" width="56.5" height="35.05590062111801" x="-3.25" y="-3.25" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMasku7d952g7"><rect id="SvgjsRect1057" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMasku7d952g7"></clipPath><clipPath id="nonForecastMasku7d952g7"></clipPath><linearGradient id="SvgjsLinearGradient1064" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1065" stop-opacity="0" stop-color="rgba(242,101,34,0)" offset="0"></stop><stop id="SvgjsStop1066" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop><stop id="SvgjsStop1067" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop></linearGradient></defs><line id="SvgjsLine1054" x1="0" y1="0" x2="0" y2="28.55590062111801" stroke="#b6b6b6" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="28.55590062111801" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><g id="SvgjsG1070" class="apexcharts-grid"><g id="SvgjsG1071" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1074" x1="0" y1="0" x2="50" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1075" x1="0" y1="14.277950310559005" x2="50" y2="14.277950310559005" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1076" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1072" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1078" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1077" x1="0" y1="1" x2="0" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1073" class="apexcharts-grid-borders" style="display: none;"></g><g id="SvgjsG1060" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1061" class="apexcharts-series" zIndex="0" seriesName="ActivexCompany" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1068" d="M0 10.708462732919251C2.9166666666666665 10.708462732919251 5.416666666666668 0 8.333333333333334 0C11.25 0 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C19.583333333333336 3.569487577639748 22.083333333333336 14.277950310559005 25 14.277950310559005C27.916666666666668 14.277950310559005 30.416666666666668 2.8555900621117978 33.333333333333336 2.8555900621117978C36.25 2.8555900621117978 38.75000000000001 22.130822981366457 41.66666666666667 22.130822981366457C44.583333333333336 22.130822981366457 47.083333333333336 13.564052795031055 50 13.564052795031055C50 13.564052795031055 50 13.564052795031055 50 28.55590062111801L0 28.55590062111801C0 28.55590062111801 0 10.708462732919251 0 10.708462732919251 " fill="url(#SvgjsLinearGradient1064)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMasku7d952g7)" pathTo="M 0 10.708462732919251C 2.9166666666666665 10.708462732919251 5.416666666666668 0 8.333333333333334 0C 11.25 0 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C 19.583333333333336 3.569487577639748 22.083333333333336 14.277950310559005 25 14.277950310559005C 27.916666666666668 14.277950310559005 30.416666666666668 2.8555900621117978 33.333333333333336 2.8555900621117978C 36.25 2.8555900621117978 38.75000000000001 22.130822981366457 41.66666666666667 22.130822981366457C 44.583333333333336 22.130822981366457 47.083333333333336 13.564052795031055 50 13.564052795031055C 50 13.564052795031055 50 13.564052795031055 50 28.55590062111801 L 0 28.55590062111801z" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801z"></path><path id="SvgjsPath1069" d="M0 10.708462732919251C2.9166666666666665 10.708462732919251 5.416666666666668 0 8.333333333333334 0C11.25 0 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C19.583333333333336 3.569487577639748 22.083333333333336 14.277950310559005 25 14.277950310559005C27.916666666666668 14.277950310559005 30.416666666666668 2.8555900621117978 33.333333333333336 2.8555900621117978C36.25 2.8555900621117978 38.75000000000001 22.130822981366457 41.66666666666667 22.130822981366457C44.583333333333336 22.130822981366457 47.083333333333336 13.564052795031055 50 13.564052795031055C50 13.564052795031055 50 13.564052795031055 50 13.564052795031055 " fill="none" fill-opacity="1" stroke="#f26522" stroke-opacity="1" stroke-linecap="butt" stroke-width="2.5" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMasku7d952g7)" pathTo="M 0 10.708462732919251C 2.9166666666666665 10.708462732919251 5.416666666666668 0 8.333333333333334 0C 11.25 0 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C 19.583333333333336 3.569487577639748 22.083333333333336 14.277950310559005 25 14.277950310559005C 27.916666666666668 14.277950310559005 30.416666666666668 2.8555900621117978 33.333333333333336 2.8555900621117978C 36.25 2.8555900621117978 38.75000000000001 22.130822981366457 41.66666666666667 22.130822981366457C 44.583333333333336 22.130822981366457 47.083333333333336 13.564052795031055 50 13.564052795031055" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801" fill-rule="evenodd"></path><g id="SvgjsG1062" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"><g class="apexcharts-series-markers"><path id="SvgjsPath1094" d="M 0, 0 
+           m -0, 0 
+           a 0,0 0 1,0 0,0 
+           a 0,0 0 1,0 -0,0" fill="#f26522" fill-opacity="1" stroke="#ffffff" stroke-opacity="0.9" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" cx="0" cy="0" shape="circle" class="apexcharts-marker wjqloui0jl no-pointer-events" default-marker-size="0"></path></g></g></g><g id="SvgjsG1063" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1079" x1="0" y1="0" x2="50" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1080" x1="0" y1="0" x2="50" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1081" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1082" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g></g><g id="SvgjsG1091" class="apexcharts-yaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1092" class="apexcharts-xaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1093" class="apexcharts-point-annotations apexcharts-hidden-element-shown"></g></g></svg><div class="apexcharts-tooltip apexcharts-theme-dark"><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-0" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(242, 101, 34);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-dark"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Total Companies -->
+
+                <!-- Total Companies -->
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="card flex-fill">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center overflow-hidden">
+                                <span class="avatar avatar-lg bg-success flex-shrink-0">
+                                    <i class="ti ti-building fs-16"></i>
+                                </span>
+                                <div class="ms-2 overflow-hidden">
+                                    <p class="fs-12 fw-medium mb-1 text-truncate">Active Companies</p>
+                                    <h4>920</h4>
+                                </div>
+                            </div>
+                            <div id="active-chart" style="min-height: 31.0559px;"><div id="apexchartsc048hpfug" class="apexcharts-canvas apexchartsc048hpfug apexcharts-theme-" style="width: 50px; height: 31.0559px;"><svg id="SvgjsSvg1001" width="50" height="31.05590062111801" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)"><foreignObject x="0" y="0" width="50" height="31.05590062111801"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 15.528px;"></div><style type="text/css">
+      .apexcharts-flip-y {
+        transform: scaleY(-1) translateY(-100%);
+        transform-origin: top;
+        transform-box: fill-box;
+      }
+      .apexcharts-flip-x {
+        transform: scaleX(-1);
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      .apexcharts-legend {
+        display: flex;
+        overflow: auto;
+        padding: 0 10px;
+      }
+      .apexcharts-legend.apx-legend-position-bottom, .apexcharts-legend.apx-legend-position-top {
+        flex-wrap: wrap
+      }
+      .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        flex-direction: column;
+        bottom: 0;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left, .apexcharts-legend.apx-legend-position-top.apexcharts-align-left, .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        justify-content: flex-start;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
+        justify-content: center;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-right, .apexcharts-legend.apx-legend-position-top.apexcharts-align-right {
+        justify-content: flex-end;
+      }
+      .apexcharts-legend-series {
+        cursor: pointer;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+      }
+      .apexcharts-legend-text {
+        position: relative;
+        font-size: 14px;
+      }
+      .apexcharts-legend-text *, .apexcharts-legend-marker * {
+        pointer-events: none;
+      }
+      .apexcharts-legend-marker {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 1px;
+      }
+
+      .apexcharts-legend-series.apexcharts-no-click {
+        cursor: auto;
+      }
+      .apexcharts-legend .apexcharts-hidden-zero-series, .apexcharts-legend .apexcharts-hidden-null-series {
+        display: none !important;
+      }
+      .apexcharts-inactive-legend {
+        opacity: 0.45;
+      }</style></foreignObject><rect id="SvgjsRect1006" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1011" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1012" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1043" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1003" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1.25)"><defs id="SvgjsDefs1002"><clipPath id="gridRectMaskc048hpfug"><rect id="SvgjsRect1008" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectBarMaskc048hpfug"><rect id="SvgjsRect1009" width="56.5" height="35.05590062111801" x="-3.25" y="-3.25" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMaskc048hpfug"><rect id="SvgjsRect1010" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskc048hpfug"></clipPath><clipPath id="nonForecastMaskc048hpfug"></clipPath><linearGradient id="SvgjsLinearGradient1017" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1018" stop-opacity="0" stop-color="rgba(242,101,34,0)" offset="0"></stop><stop id="SvgjsStop1019" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop><stop id="SvgjsStop1020" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop></linearGradient></defs><line id="SvgjsLine1007" x1="0" y1="0" x2="0" y2="28.55590062111801" stroke="#b6b6b6" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="28.55590062111801" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><g id="SvgjsG1023" class="apexcharts-grid"><g id="SvgjsG1024" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1027" x1="0" y1="0" x2="50" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1028" x1="0" y1="14.277950310559005" x2="50" y2="14.277950310559005" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1029" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1025" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1031" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1030" x1="0" y1="1" x2="0" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1026" class="apexcharts-grid-borders" style="display: none;"></g><g id="SvgjsG1013" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1014" class="apexcharts-series" zIndex="0" seriesName="Messages" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1021" d="M0 21.416925465838506C2.9166666666666665 21.416925465838506 5.416666666666668 9.709006211180125 8.333333333333334 9.709006211180125C11.25 9.709006211180125 13.750000000000002 16.847981366459628 16.666666666666668 16.847981366459628C19.583333333333336 16.847981366459628 22.083333333333336 25.129192546583848 25 25.129192546583848C27.916666666666668 25.129192546583848 30.416666666666668 18.27577639751553 33.333333333333336 18.27577639751553C36.25 18.27577639751553 38.75000000000001 25.98586956521739 41.66666666666667 25.98586956521739C44.583333333333336 25.98586956521739 47.083333333333336 22.559161490683227 50 22.559161490683227C50 22.559161490683227 50 22.559161490683227 50 28.55590062111801L0 28.55590062111801C0 28.55590062111801 0 21.416925465838506 0 21.416925465838506 " fill="url(#SvgjsLinearGradient1017)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskc048hpfug)" pathTo="M 0 21.416925465838506C 2.9166666666666665 21.416925465838506 5.416666666666668 9.709006211180125 8.333333333333334 9.709006211180125C 11.25 9.709006211180125 13.750000000000002 16.847981366459628 16.666666666666668 16.847981366459628C 19.583333333333336 16.847981366459628 22.083333333333336 25.129192546583848 25 25.129192546583848C 27.916666666666668 25.129192546583848 30.416666666666668 18.27577639751553 33.333333333333336 18.27577639751553C 36.25 18.27577639751553 38.75000000000001 25.98586956521739 41.66666666666667 25.98586956521739C 44.583333333333336 25.98586956521739 47.083333333333336 22.559161490683227 50 22.559161490683227C 50 22.559161490683227 50 22.559161490683227 50 28.55590062111801 L 0 28.55590062111801z" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801z"></path><path id="SvgjsPath1022" d="M0 21.416925465838506C2.9166666666666665 21.416925465838506 5.416666666666668 9.709006211180125 8.333333333333334 9.709006211180125C11.25 9.709006211180125 13.750000000000002 16.847981366459628 16.666666666666668 16.847981366459628C19.583333333333336 16.847981366459628 22.083333333333336 25.129192546583848 25 25.129192546583848C27.916666666666668 25.129192546583848 30.416666666666668 18.27577639751553 33.333333333333336 18.27577639751553C36.25 18.27577639751553 38.75000000000001 25.98586956521739 41.66666666666667 25.98586956521739C44.583333333333336 25.98586956521739 47.083333333333336 22.559161490683227 50 22.559161490683227C50 22.559161490683227 50 22.559161490683227 50 22.559161490683227 " fill="none" fill-opacity="1" stroke="#f26522" stroke-opacity="1" stroke-linecap="butt" stroke-width="2.5" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskc048hpfug)" pathTo="M 0 21.416925465838506C 2.9166666666666665 21.416925465838506 5.416666666666668 9.709006211180125 8.333333333333334 9.709006211180125C 11.25 9.709006211180125 13.750000000000002 16.847981366459628 16.666666666666668 16.847981366459628C 19.583333333333336 16.847981366459628 22.083333333333336 25.129192546583848 25 25.129192546583848C 27.916666666666668 25.129192546583848 30.416666666666668 18.27577639751553 33.333333333333336 18.27577639751553C 36.25 18.27577639751553 38.75000000000001 25.98586956521739 41.66666666666667 25.98586956521739C 44.583333333333336 25.98586956521739 47.083333333333336 22.559161490683227 50 22.559161490683227" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801" fill-rule="evenodd"></path><g id="SvgjsG1015" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"><g class="apexcharts-series-markers"><path id="SvgjsPath1047" d="M 0, 0 
+           m -0, 0 
+           a 0,0 0 1,0 0,0 
+           a 0,0 0 1,0 -0,0" fill="#f26522" fill-opacity="1" stroke="#ffffff" stroke-opacity="0.9" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" cx="0" cy="0" shape="circle" class="apexcharts-marker w3ixqy0w5 no-pointer-events" default-marker-size="0"></path></g></g></g><g id="SvgjsG1016" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1032" x1="0" y1="0" x2="50" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1033" x1="0" y1="0" x2="50" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1034" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1035" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g></g><g id="SvgjsG1044" class="apexcharts-yaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1045" class="apexcharts-xaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1046" class="apexcharts-point-annotations apexcharts-hidden-element-shown"></g></g></svg><div class="apexcharts-tooltip apexcharts-theme-dark"><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-0" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(242, 101, 34);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-dark"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Total Companies -->
+
+                <!-- Inactive Companies -->
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="card flex-fill">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center overflow-hidden">
+                                <span class="avatar avatar-lg bg-danger flex-shrink-0">
+                                    <i class="ti ti-building fs-16"></i>
+                                </span>
+                                <div class="ms-2 overflow-hidden">
+                                    <p class="fs-12 fw-medium mb-1 text-truncate">Inactive Companies</p>
+                                    <h4>30</h4>
+                                </div>
+                            </div>
+                            <div id="inactive-chart" style="min-height: 31.0559px;"><div id="apexcharts2xwrgyzz" class="apexcharts-canvas apexcharts2xwrgyzz apexcharts-theme-" style="width: 50px; height: 31.0559px;"><svg id="SvgjsSvg1095" width="50" height="31.05590062111801" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)"><foreignObject x="0" y="0" width="50" height="31.05590062111801"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 15.528px;"></div><style type="text/css">
+      .apexcharts-flip-y {
+        transform: scaleY(-1) translateY(-100%);
+        transform-origin: top;
+        transform-box: fill-box;
+      }
+      .apexcharts-flip-x {
+        transform: scaleX(-1);
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      .apexcharts-legend {
+        display: flex;
+        overflow: auto;
+        padding: 0 10px;
+      }
+      .apexcharts-legend.apx-legend-position-bottom, .apexcharts-legend.apx-legend-position-top {
+        flex-wrap: wrap
+      }
+      .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        flex-direction: column;
+        bottom: 0;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left, .apexcharts-legend.apx-legend-position-top.apexcharts-align-left, .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        justify-content: flex-start;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
+        justify-content: center;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-right, .apexcharts-legend.apx-legend-position-top.apexcharts-align-right {
+        justify-content: flex-end;
+      }
+      .apexcharts-legend-series {
+        cursor: pointer;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+      }
+      .apexcharts-legend-text {
+        position: relative;
+        font-size: 14px;
+      }
+      .apexcharts-legend-text *, .apexcharts-legend-marker * {
+        pointer-events: none;
+      }
+      .apexcharts-legend-marker {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 1px;
+      }
+
+      .apexcharts-legend-series.apexcharts-no-click {
+        cursor: auto;
+      }
+      .apexcharts-legend .apexcharts-hidden-zero-series, .apexcharts-legend .apexcharts-hidden-null-series {
+        display: none !important;
+      }
+      .apexcharts-inactive-legend {
+        opacity: 0.45;
+      }</style></foreignObject><rect id="SvgjsRect1100" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1105" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1106" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1137" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1097" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1.25)"><defs id="SvgjsDefs1096"><clipPath id="gridRectMask2xwrgyzz"><rect id="SvgjsRect1102" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectBarMask2xwrgyzz"><rect id="SvgjsRect1103" width="56.5" height="35.05590062111801" x="-3.25" y="-3.25" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMask2xwrgyzz"><rect id="SvgjsRect1104" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMask2xwrgyzz"></clipPath><clipPath id="nonForecastMask2xwrgyzz"></clipPath><linearGradient id="SvgjsLinearGradient1111" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1112" stop-opacity="0" stop-color="rgba(242,101,34,0)" offset="0"></stop><stop id="SvgjsStop1113" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop><stop id="SvgjsStop1114" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop></linearGradient></defs><line id="SvgjsLine1101" x1="0" y1="0" x2="0" y2="28.55590062111801" stroke="#b6b6b6" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="28.55590062111801" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><g id="SvgjsG1117" class="apexcharts-grid"><g id="SvgjsG1118" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1121" x1="0" y1="0" x2="50" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1122" x1="0" y1="14.277950310559005" x2="50" y2="14.277950310559005" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1123" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1119" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1125" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1124" x1="0" y1="1" x2="0" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1120" class="apexcharts-grid-borders" style="display: none;"></g><g id="SvgjsG1107" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1108" class="apexcharts-series" zIndex="0" seriesName="InactivexCompany" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1115" d="M0 10.708462732919251C2.9166666666666665 10.708462732919251 5.416666666666668 21.416925465838506 8.333333333333334 21.416925465838506C11.25 21.416925465838506 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C19.583333333333336 3.569487577639748 22.083333333333336 24.986413043478258 25 24.986413043478258C27.916666666666668 24.986413043478258 30.416666666666668 10.708462732919251 33.333333333333336 10.708462732919251C36.25 10.708462732919251 38.75000000000001 8.5667701863354 41.66666666666667 8.5667701863354C44.583333333333336 8.5667701863354 47.083333333333336 13.564052795031055 50 13.564052795031055C50 13.564052795031055 50 13.564052795031055 50 28.55590062111801L0 28.55590062111801C0 28.55590062111801 0 10.708462732919251 0 10.708462732919251 " fill="url(#SvgjsLinearGradient1111)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask2xwrgyzz)" pathTo="M 0 10.708462732919251C 2.9166666666666665 10.708462732919251 5.416666666666668 21.416925465838506 8.333333333333334 21.416925465838506C 11.25 21.416925465838506 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C 19.583333333333336 3.569487577639748 22.083333333333336 24.986413043478258 25 24.986413043478258C 27.916666666666668 24.986413043478258 30.416666666666668 10.708462732919251 33.333333333333336 10.708462732919251C 36.25 10.708462732919251 38.75000000000001 8.5667701863354 41.66666666666667 8.5667701863354C 44.583333333333336 8.5667701863354 47.083333333333336 13.564052795031055 50 13.564052795031055C 50 13.564052795031055 50 13.564052795031055 50 28.55590062111801 L 0 28.55590062111801z" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801z"></path><path id="SvgjsPath1116" d="M0 10.708462732919251C2.9166666666666665 10.708462732919251 5.416666666666668 21.416925465838506 8.333333333333334 21.416925465838506C11.25 21.416925465838506 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C19.583333333333336 3.569487577639748 22.083333333333336 24.986413043478258 25 24.986413043478258C27.916666666666668 24.986413043478258 30.416666666666668 10.708462732919251 33.333333333333336 10.708462732919251C36.25 10.708462732919251 38.75000000000001 8.5667701863354 41.66666666666667 8.5667701863354C44.583333333333336 8.5667701863354 47.083333333333336 13.564052795031055 50 13.564052795031055C50 13.564052795031055 50 13.564052795031055 50 13.564052795031055 " fill="none" fill-opacity="1" stroke="#f26522" stroke-opacity="1" stroke-linecap="butt" stroke-width="2.5" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask2xwrgyzz)" pathTo="M 0 10.708462732919251C 2.9166666666666665 10.708462732919251 5.416666666666668 21.416925465838506 8.333333333333334 21.416925465838506C 11.25 21.416925465838506 13.750000000000002 3.569487577639748 16.666666666666668 3.569487577639748C 19.583333333333336 3.569487577639748 22.083333333333336 24.986413043478258 25 24.986413043478258C 27.916666666666668 24.986413043478258 30.416666666666668 10.708462732919251 33.333333333333336 10.708462732919251C 36.25 10.708462732919251 38.75000000000001 8.5667701863354 41.66666666666667 8.5667701863354C 44.583333333333336 8.5667701863354 47.083333333333336 13.564052795031055 50 13.564052795031055" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801" fill-rule="evenodd"></path><g id="SvgjsG1109" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"><g class="apexcharts-series-markers"><path id="SvgjsPath1141" d="M 0, 0 
+           m -0, 0 
+           a 0,0 0 1,0 0,0 
+           a 0,0 0 1,0 -0,0" fill="#f26522" fill-opacity="1" stroke="#ffffff" stroke-opacity="0.9" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" cx="0" cy="0" shape="circle" class="apexcharts-marker wyvyukmo3 no-pointer-events" default-marker-size="0"></path></g></g></g><g id="SvgjsG1110" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1126" x1="0" y1="0" x2="50" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1127" x1="0" y1="0" x2="50" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1128" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1129" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g></g><g id="SvgjsG1138" class="apexcharts-yaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1139" class="apexcharts-xaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1140" class="apexcharts-point-annotations apexcharts-hidden-element-shown"></g></g></svg><div class="apexcharts-tooltip apexcharts-theme-dark"><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-0" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(242, 101, 34);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-dark"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Inactive Companies -->
+
+                <!-- Company Location -->
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="card flex-fill">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center overflow-hidden">
+                                <span class="avatar avatar-lg bg-skyblue flex-shrink-0">
+                                    <i class="ti ti-map-pin-check fs-16"></i>
+                                </span>
+                                <div class="ms-2 overflow-hidden">
+                                    <p class="fs-12 fw-medium mb-1 text-truncate">Company Location</p>
+                                    <h4>180</h4>
+                                </div>
+                            </div>
+                            <div id="location-chart" style="min-height: 31.0559px;"><div id="apexcharts98jahbahg" class="apexcharts-canvas apexcharts98jahbahg apexcharts-theme-" style="width: 50px; height: 31.0559px;"><svg id="SvgjsSvg1142" width="50" height="31.05590062111801" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)"><foreignObject x="0" y="0" width="50" height="31.05590062111801"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 15.528px;"></div><style type="text/css">
+      .apexcharts-flip-y {
+        transform: scaleY(-1) translateY(-100%);
+        transform-origin: top;
+        transform-box: fill-box;
+      }
+      .apexcharts-flip-x {
+        transform: scaleX(-1);
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      .apexcharts-legend {
+        display: flex;
+        overflow: auto;
+        padding: 0 10px;
+      }
+      .apexcharts-legend.apx-legend-position-bottom, .apexcharts-legend.apx-legend-position-top {
+        flex-wrap: wrap
+      }
+      .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        flex-direction: column;
+        bottom: 0;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left, .apexcharts-legend.apx-legend-position-top.apexcharts-align-left, .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        justify-content: flex-start;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
+        justify-content: center;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-right, .apexcharts-legend.apx-legend-position-top.apexcharts-align-right {
+        justify-content: flex-end;
+      }
+      .apexcharts-legend-series {
+        cursor: pointer;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+      }
+      .apexcharts-legend-text {
+        position: relative;
+        font-size: 14px;
+      }
+      .apexcharts-legend-text *, .apexcharts-legend-marker * {
+        pointer-events: none;
+      }
+      .apexcharts-legend-marker {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 1px;
+      }
+
+      .apexcharts-legend-series.apexcharts-no-click {
+        cursor: auto;
+      }
+      .apexcharts-legend .apexcharts-hidden-zero-series, .apexcharts-legend .apexcharts-hidden-null-series {
+        display: none !important;
+      }
+      .apexcharts-inactive-legend {
+        opacity: 0.45;
+      }</style></foreignObject><rect id="SvgjsRect1147" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1152" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1153" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1184" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1144" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1.25)"><defs id="SvgjsDefs1143"><clipPath id="gridRectMask98jahbahg"><rect id="SvgjsRect1149" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectBarMask98jahbahg"><rect id="SvgjsRect1150" width="56.5" height="35.05590062111801" x="-3.25" y="-3.25" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMask98jahbahg"><rect id="SvgjsRect1151" width="50" height="28.55590062111801" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMask98jahbahg"></clipPath><clipPath id="nonForecastMask98jahbahg"></clipPath><linearGradient id="SvgjsLinearGradient1158" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1159" stop-opacity="0" stop-color="rgba(242,101,34,0)" offset="0"></stop><stop id="SvgjsStop1160" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop><stop id="SvgjsStop1161" stop-opacity="0" stop-color="rgba(249,178,145,0)" offset="1"></stop></linearGradient></defs><line id="SvgjsLine1148" x1="0" y1="0" x2="0" y2="28.55590062111801" stroke="#b6b6b6" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="28.55590062111801" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><g id="SvgjsG1164" class="apexcharts-grid"><g id="SvgjsG1165" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1168" x1="0" y1="0" x2="50" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1169" x1="0" y1="14.277950310559005" x2="50" y2="14.277950310559005" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1170" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1166" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1172" x1="0" y1="28.55590062111801" x2="50" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1171" x1="0" y1="1" x2="0" y2="28.55590062111801" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1167" class="apexcharts-grid-borders" style="display: none;"></g><g id="SvgjsG1154" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1155" class="apexcharts-series" zIndex="0" seriesName="InactivexCompany" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1162" d="M0 7.1389751552795C2.9166666666666665 7.1389751552795 5.416666666666668 0 8.333333333333334 0C11.25 0 13.750000000000002 17.847437888198755 16.666666666666668 17.847437888198755C19.583333333333336 17.847437888198755 22.083333333333336 12.136257763975152 25 12.136257763975152C27.916666666666668 12.136257763975152 30.416666666666668 14.277950310559005 33.333333333333336 14.277950310559005C36.25 14.277950310559005 38.75000000000001 12.136257763975152 41.66666666666667 12.136257763975152C44.583333333333336 12.136257763975152 47.083333333333336 10.708462732919251 50 10.708462732919251C50 10.708462732919251 50 10.708462732919251 50 28.55590062111801L0 28.55590062111801C0 28.55590062111801 0 7.1389751552795 0 7.1389751552795 " fill="url(#SvgjsLinearGradient1158)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask98jahbahg)" pathTo="M 0 7.1389751552795C 2.9166666666666665 7.1389751552795 5.416666666666668 0 8.333333333333334 0C 11.25 0 13.750000000000002 17.847437888198755 16.666666666666668 17.847437888198755C 19.583333333333336 17.847437888198755 22.083333333333336 12.136257763975152 25 12.136257763975152C 27.916666666666668 12.136257763975152 30.416666666666668 14.277950310559005 33.333333333333336 14.277950310559005C 36.25 14.277950310559005 38.75000000000001 12.136257763975152 41.66666666666667 12.136257763975152C 44.583333333333336 12.136257763975152 47.083333333333336 10.708462732919251 50 10.708462732919251C 50 10.708462732919251 50 10.708462732919251 50 28.55590062111801 L 0 28.55590062111801z" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801z"></path><path id="SvgjsPath1163" d="M0 7.1389751552795C2.9166666666666665 7.1389751552795 5.416666666666668 0 8.333333333333334 0C11.25 0 13.750000000000002 17.847437888198755 16.666666666666668 17.847437888198755C19.583333333333336 17.847437888198755 22.083333333333336 12.136257763975152 25 12.136257763975152C27.916666666666668 12.136257763975152 30.416666666666668 14.277950310559005 33.333333333333336 14.277950310559005C36.25 14.277950310559005 38.75000000000001 12.136257763975152 41.66666666666667 12.136257763975152C44.583333333333336 12.136257763975152 47.083333333333336 10.708462732919251 50 10.708462732919251C50 10.708462732919251 50 10.708462732919251 50 10.708462732919251 " fill="none" fill-opacity="1" stroke="#f26522" stroke-opacity="1" stroke-linecap="butt" stroke-width="2.5" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask98jahbahg)" pathTo="M 0 7.1389751552795C 2.9166666666666665 7.1389751552795 5.416666666666668 0 8.333333333333334 0C 11.25 0 13.750000000000002 17.847437888198755 16.666666666666668 17.847437888198755C 19.583333333333336 17.847437888198755 22.083333333333336 12.136257763975152 25 12.136257763975152C 27.916666666666668 12.136257763975152 30.416666666666668 14.277950310559005 33.333333333333336 14.277950310559005C 36.25 14.277950310559005 38.75000000000001 12.136257763975152 41.66666666666667 12.136257763975152C 44.583333333333336 12.136257763975152 47.083333333333336 10.708462732919251 50 10.708462732919251" pathFrom="M 0 28.55590062111801 L 0 28.55590062111801 L 8.333333333333334 28.55590062111801 L 16.666666666666668 28.55590062111801 L 25 28.55590062111801 L 33.333333333333336 28.55590062111801 L 41.66666666666667 28.55590062111801 L 50 28.55590062111801" fill-rule="evenodd"></path><g id="SvgjsG1156" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"><g class="apexcharts-series-markers"><path id="SvgjsPath1188" d="M 0, 0 
+           m -0, 0 
+           a 0,0 0 1,0 0,0 
+           a 0,0 0 1,0 -0,0" fill="#f26522" fill-opacity="1" stroke="#ffffff" stroke-opacity="0.9" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" cx="0" cy="0" shape="circle" class="apexcharts-marker win92v68tl no-pointer-events" default-marker-size="0"></path></g></g></g><g id="SvgjsG1157" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1173" x1="0" y1="0" x2="50" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1174" x1="0" y1="0" x2="50" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1175" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1176" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g></g><g id="SvgjsG1185" class="apexcharts-yaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1186" class="apexcharts-xaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1187" class="apexcharts-point-annotations apexcharts-hidden-element-shown"></g></g></svg><div class="apexcharts-tooltip apexcharts-theme-dark"><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-0" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(242, 101, 34);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-dark"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Company Location -->
+
+            </div>
+
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                    <h5>Companies List</h5>
+                    <div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+                        <div class="me-3">
+                            <div class="input-icon-end position-relative">
+                                <input type="text" class="form-control date-range bookingrange" placeholder="dd/mm/yyyy - dd/mm/yyyy">
+                                <span class="input-icon-addon">
+                                    <i class="ti ti-chevron-down"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="dropdown me-3">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                                Select Plan
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-3">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Advanced</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Basic</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Enterprise</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown me-3">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                                Select Status
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-3">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                                Sort By : Last 7 Days
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-3">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Ascending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Desending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last Month</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last 7 Days</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="custom-datatable-filter table-responsive">
+                        <table class="table datatable">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="no-sort">
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox" id="select-all">
+                                        </div>
+                                    </th>
+                                    <th>Company Name</th>
+                                    <th>Email</th>
+                                    <th>Account URL</th>
+                                    <th>Plan</th>
+                                    <th>Created Date</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-01.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">BrightWave Innovations</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90fdf9f3f8f1f5fcd0f5e8f1fde0fcf5bef3fffd">[email&#160;protected]</a></td>
+                                    <td>bwi.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Advanced (Monthly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>12 Sep 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2"  data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-02.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">Stellar Dynamics</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d1a2bea1b9b8b491b4a9b0bca1bdb4ffb2bebc">[email&#160;protected]</a></td>
+                                    <td>sd.example.com</td>
+                                    <td>											
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Basic (Yearly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>24 Oct 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-03.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">Quantum Nexus</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7d1e1c10180f12133d18051c100d1118531e1210">[email&#160;protected]</a></td>
+                                    <td>qn.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Advanced (Monthly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>18 Feb 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-04.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">EcoVision Enterprises</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a5e554853497a5f425b574a565f14595557">[email&#160;protected]</a></td>
+                                    <td>eve.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Advanced (Monthly)</p> 
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>17 Oct 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2"  data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-05.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">Aurora Technologies</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4a0bcbbb9b5a794b1acb5b9a4b8b1fab7bbb9">[email&#160;protected]</a></td>
+                                    <td>at.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Enterprise (Monthly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>20 Jul 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-06.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">BlueSky Ventures</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fb909a8f93979e9e95bb9e839a968b979ed5989496">[email&#160;protected]</a></td>
+                                    <td>bsv.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Advanced (Monthly)</p> 
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>10 Mar 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-07.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">TerraFusion Energy</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a48585f494f6a4f524b475a464f04494547">[email&#160;protected]</a></td>
+                                    <td>tfe.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Enterprise (Yearly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>29 Aug 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-08.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">UrbanPulse Design</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4b1a7a0b1b8b8b194b1acb5b9a4b8b1fab7bbb9">[email&#160;protected]</a></td>
+                                    <td>upd.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Basic (Monthly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>22 Feb 2024</td>
+                                    <td>
+                                        <span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Inactive
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2"  data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-09.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">Nimbus Networks</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e7d7a6b7e666b604e6b766f637e626b206d6163">[email&#160;protected]</a></td>
+                                    <td>nn.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="mb-0 me-2">Basic (Yearly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>03 Nov 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-md">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center file-name-icon">
+                                            <a href="#" class="avatar avatar-md border rounded-circle">
+                                                <img src="{{ url_for('static', filename='assets/img/company/company-10.svg') }}" class="img-fluid" alt="img">
+                                            </a>
+                                            <div class="ms-2">
+                                                <h6 class="fw-medium"><a href="#">Epicurean Delights</a></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="badbd4dddfd6dbfadfc2dbd7cad6df94d9d5d7">[email&#160;protected]</a></td>
+                                    <td>ed.example.com</td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            `<p class="mb-0 me-2">Advanced (Monthly)</p>
+                                            <a href="#" data-bs-toggle="modal" class="badge badge-purple badge-xs" data-bs-target="#upgrade_info">Upgrade</a>
+                                        </div>
+                                    </td>
+                                    <td>17 dec 2024</td>
+                                    <td>
+                                        <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                            <i class="ti ti-point-filled me-1"></i>Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icon d-inline-flex">
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#company_detail"><i class="ti ti-eye"></i></a>
+                                            <a href="#" class="me-2" data-bs-toggle="modal" data-bs-target="#edit_company"><i class="ti ti-edit"></i></a>
+                                            <a href="javascript:void(0);" data-bs-target="#delete_modal" data-bs-toggle="modal"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {% include 'user/head_foot/footer.html' %}
+
+    </div>
+
+    <!-- /Page Wrapper -->
+
+    <!-- Add Company -->
+    <div class="modal fade" id="add_company">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Company</h4>
+                    <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ti ti-x"></i>
+                    </button>
+                </div>
+                <form action="#companies">
+                    <div class="modal-body pb-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">                                                
+                                    <div class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
+                                        <img src="{{ url_for('static', filename='assets/img/profiles/avatar-30.jpg') }}" alt="img" class="rounded-circle">
+                                    </div>                                              
+                                    <div class="profile-upload">
+                                        <div class="mb-2">
+                                            <h6 class="mb-1">Upload Profile Image</h6>
+                                            <p class="fs-12">Image should be below 4 mb</p>
+                                        </div>
+                                        <div class="profile-uploader d-flex align-items-center">
+                                            <div class="drag-upload-btn btn btn-sm btn-primary me-2">
+                                                Upload
+                                                <input type="file" class="form-control image-sign" multiple="">
+                                            </div>
+                                            <a href="javascript:void(0);" class="btn btn-light btn-sm">Cancel</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Name <span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Account URL</label>
+                                    <input type="text" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Phone Number <span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Website</label>
+                                    <input type="text" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Password <span class="text-danger"> *</span></label>
+                                    <div class="pass-group">
+                                        <input type="password" class="pass-input form-control">
+                                        <span class="ti toggle-password ti-eye-off"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Confirm Password <span class="text-danger"> *</span></label>
+                                    <div class="pass-group">
+                                        <input type="password" class="pass-inputs form-control">
+                                        <span class="ti toggle-passwords ti-eye-off"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Plan Name <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-1-nztt" tabindex="-1" aria-hidden="true">
+                                        <option data-select2-id="select2-data-3-2o56">Select</option>
+                                        <option>Advanced</option>
+                                        <option>Basic</option>
+                                        <option>Enterprise</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-neg3" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-cjfl-container" aria-controls="select2-cjfl-container"><span class="select2-selection__rendered" id="select2-cjfl-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Plan Type <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-4-vx1p" tabindex="-1" aria-hidden="true">
+                                        <option data-select2-id="select2-data-6-o66d">Select</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-5-e42i" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ixgx-container" aria-controls="select2-ixgx-container"><span class="select2-selection__rendered" id="select2-ixgx-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Currency <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-7-wwsg" tabindex="-1" aria-hidden="true">
+                                        <option data-select2-id="select2-data-9-qxma">Select</option>
+                                        <option>USD</option>
+                                        <option>Euro</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-8-719p" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-bxea-container" aria-controls="select2-bxea-container"><span class="select2-selection__rendered" id="select2-bxea-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Language <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-10-t1nr" tabindex="-1" aria-hidden="true">
+                                        <option data-select2-id="select2-data-12-hvez">Select</option>
+                                        <option>English</option>
+                                        <option>Chinese</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-11-kjel" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-81me-container" aria-controls="select2-81me-container"><span class="select2-selection__rendered" id="select2-81me-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Status</label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-13-70k0" tabindex="-1" aria-hidden="true">
+                                        <option data-select2-id="select2-data-15-vxdn">Select</option>
+                                        <option>Active</option>
+                                        <option>Inactive</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-14-7be2" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-n9fm-container" aria-controls="select2-n9fm-container"><span class="select2-selection__rendered" id="select2-n9fm-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Company</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /Add Company -->
+
+    <!-- Edit Company -->
+
+    <div class="modal fade" id="edit_company">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Company</h4>
+                    <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ti ti-x"></i>
+                    </button>
+                </div>
+                <form action="#companies">
+                    <div class="modal-body pb-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">                                                
+                                    <div class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
+                                        <img src="{{ url_for('static', filename='assets/img/profiles/avatar-30.jpg') }}" alt="img" class="rounded-circle">
+                                    </div>                                              
+                                    <div class="profile-upload">
+                                        <div class="mb-2">
+                                            <h6 class="mb-1">Upload Profile Image</h6>
+                                            <p class="fs-12">Image should be below 4 mb</p>
+                                        </div>
+                                        <div class="profile-uploader d-flex align-items-center">
+                                            <div class="drag-upload-btn btn btn-sm btn-primary me-2">
+                                                Upload
+                                                <input type="file" class="form-control image-sign" multiple="">
+                                            </div>
+                                            <a href="javascript:void(0);" class="btn btn-light btn-sm">Cancel</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Name <span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control" value="Stellar Dynamics">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" value="sophie@example.com">
+                                </div>									
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Account URL</label>
+                                    <input type="text" class="form-control" value="sd.example.com">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Phone Number <span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control" value="+1 895455450">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Website</label>
+                                    <input type="text" class="form-control" value="Admin Website">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Password <span class="text-danger"> *</span></label>
+                                    <div class="pass-group">
+                                        <input type="password" class="pass-input form-control" value="123">
+                                        <span class="ti toggle-password ti-eye-off"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Confirm Password <span class="text-danger"> *</span></label>
+                                    <div class="pass-group">
+                                        <input type="password" class="pass-inputs form-control" value="123">
+                                        <span class="ti toggle-passwords ti-eye-off"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Plan Name <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-16-4k7g" tabindex="-1" aria-hidden="true">
+                                        <option>Select</option>
+                                        <option selected="" data-select2-id="select2-data-18-j3u0">Advanced</option>
+                                        <option>Basic</option>
+                                        <option>Enterprise</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-17-a7w7" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-suk7-container" aria-controls="select2-suk7-container"><span class="select2-selection__rendered" id="select2-suk7-container" role="textbox" aria-readonly="true" title="Advanced">Advanced</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Plan Type <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-19-1wdr" tabindex="-1" aria-hidden="true">
+                                        <option>Select</option>
+                                        <option selected="" data-select2-id="select2-data-21-0c6y">Monthly</option>
+                                        <option>Yearly</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-20-woxu" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ew48-container" aria-controls="select2-ew48-container"><span class="select2-selection__rendered" id="select2-ew48-container" role="textbox" aria-readonly="true" title="Monthly">Monthly</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Currency <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-22-03x4" tabindex="-1" aria-hidden="true">
+                                        <option>Select</option>
+                                        <option selected="" data-select2-id="select2-data-24-5tlk">USD</option>
+                                        <option>Euro</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-23-lgy4" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-knxp-container" aria-controls="select2-knxp-container"><span class="select2-selection__rendered" id="select2-knxp-container" role="textbox" aria-readonly="true" title="USD">USD</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Language <span class="text-danger"> *</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-25-wpst" tabindex="-1" aria-hidden="true">
+                                        <option>Select</option>
+                                        <option selected="" data-select2-id="select2-data-27-yz47">English</option>
+                                        <option>Chinese</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-26-gbze" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ax4q-container" aria-controls="select2-ax4q-container"><span class="select2-selection__rendered" id="select2-ax4q-container" role="textbox" aria-readonly="true" title="English">English</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Status</label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-28-8hmf" tabindex="-1" aria-hidden="true">
+                                        <option>Select</option>
+                                        <option selected="" data-select2-id="select2-data-30-0o3y">Active</option>
+                                        <option>Inactive</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-29-0dut" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-2p0o-container" aria-controls="select2-2p0o-container"><span class="select2-selection__rendered" id="select2-2p0o-container" role="textbox" aria-readonly="true" title="Active">Active</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- /Edit Company -->
+
+    <!-- Upgrade Information -->
+    <div class="modal fade" id="upgrade_info">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Upgrade Package</h4>
+                    <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ti ti-x"></i>
+                    </button>
+                </div>
+                <div class="p-3 mb-1">
+                    <div class="rounded bg-light p-3">                                                
+                        <h5 class="mb-3">Current Plan Details</h5>                                              
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <p class="fs-12 mb-0">Company Name</p>
+                                    <p class="text-gray-9">BrightWave Innovations</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <p class="fs-12 mb-0">Plan Name</p>
+                                    <p class="text-gray-9">Advanced</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <p class="fs-12 mb-0">Plan Type</p>
+                                    <p class="text-gray-9">Monthly</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <p class="fs-12 mb-0">Price</p>
+                                    <p class="text-gray-9">200</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <p class="fs-12 mb-0">Register Date</p>
+                                    <p class="text-gray-9">12/09/2024</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <p class="fs-12 mb-0">Expiring On</p>
+                                    <p class="text-gray-9">11/10/2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form action="#companies">
+                    <div class="modal-body pb-0">
+                        <h5 class="mb-4">Change Plan</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Plan Name <span class="text-danger">*</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-31-nyj9" tabindex="-1" aria-hidden="true">
+                                        <option data-select2-id="select2-data-33-sseq">Select</option>
+                                        <option>Advanced</option>
+                                        <option>Basic</option>
+                                        <option>Enterprise</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-32-pxzc" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-hws0-container" aria-controls="select2-hws0-container"><span class="select2-selection__rendered" id="select2-hws0-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 ">
+                                    <label class="form-label">Plan Type <span class="text-danger">*</span></label>
+                                    <select class="select select2-hidden-accessible" data-select2-id="select2-data-34-ri6l" tabindex="-1" aria-hidden="true">
+                                        <option data-select2-id="select2-data-36-syem">Select</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-35-7lje" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-a310-container" aria-controls="select2-a310-container"><span class="select2-selection__rendered" id="select2-a310-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Ammount<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>									
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Payment Date <span class="text-danger">*</span></label>
+                                    <div class="input-icon-end position-relative">
+                                        <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+                                        <span class="input-icon-addon">
+                                            <i class="ti ti-calendar text-gray-7"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Next Payment Date <span class="text-danger">*</span></label>
+                                    <div class="input-icon-end position-relative">
+                                        <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+                                        <span class="input-icon-addon">
+                                            <i class="ti ti-calendar text-gray-7"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Expiring On <span class="text-danger">*</span></label>
+                                    <div class="input-icon-end position-relative">
+                                        <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+                                        <span class="input-icon-addon">
+                                            <i class="ti ti-calendar text-gray-7"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- /Upgrade Information -->
+
+    <!-- Company Detail -->
+
+    <div class="modal fade" id="company_detail">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Company Detail</h4>
+                    <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ti ti-x"></i>
+                    </button>
+                </div>
+                <div class="moday-body">
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between align-items-center rounded bg-light p-3">                                                
+                            <div class="file-name-icon d-flex align-items-center">
+                                <a href="#" class="avatar avatar-md border rounded-circle flex-shrink-0 me-2">
+                                    <img src="{{ url_for('static', filename='assets/img/company/company-01.svg') }}" class="img-fluid" alt="img">
+                                </a> 
+                                <div>
+                                    <p class="text-gray-9 fw-medium mb-0">BrightWave Innovations</p>
+                                    <p>michael@example.com</p>
+                                </div>
+                            </div>                                        
+                            <span class="badge badge-success"><i class="ti ti-point-filled"></i>Active</span>
+                        </div>
+                    </div>
+                    <div class="p-3">                                                
+                        <p class="text-gray-9 fw-medium">Basic Info</p>                                            
+                        <div class="pb-1 border-bottom mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Account URL</p>
+                                        <p class="text-gray-9">bwi.example.com</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Phone Number</p>
+                                        <p class="text-gray-9">(163) 2459 315</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Website</p>
+                                        <p class="text-gray-9">www.exmple.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Currency</p>
+                                        <p class="text-gray-9">United Stated Dollar (USD)</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Language</p>
+                                        <p class="text-gray-9">English</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Addresss</p>
+                                        <p class="text-gray-9">3705 Lynn Avenue, Phelps, WI 54554</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-9 fw-medium">Plan Details</p>                                            
+                        <div>
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Plan Name</p>
+                                        <p class="text-gray-9">Advanced</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Plan Type</p>
+                                        <p class="text-gray-9">Monthly</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Price</p>
+                                        <p class="text-gray-9">$200</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Register Date</p>
+                                        <p class="text-gray-9">12/09/2024</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <p class="fs-12 mb-0">Expiring On</p>
+                                        <p class="text-gray-9">11/10/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- /Company Detail -->
+
+    <!-- Delete Modal -->
+
+    <div class="modal fade" id="delete_modal">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <span class="avatar avatar-xl bg-transparent-danger text-danger mb-3">
+                        <i class="ti ti-trash-x fs-36"></i>
+                    </span>
+                    <h4 class="mb-1">Confirm Delete</h4>
+                    <p class="mb-3">You want to delete all the marked items, this cant be undone once you delete.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+                        <a href="#companies" class="btn btn-danger">Yes, Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /Delete Modal -->
+
+
+</div>
+<!-- /Main Wrapper -->
+
+{% include 'user/head_foot/scripts.html' %}
+
+</body>
+
+</html>

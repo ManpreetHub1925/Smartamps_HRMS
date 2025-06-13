@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light" data-sidebar="indigo" data-color="primary" data-topbar="bluegradient" data-layout="modern" data-topbarcolor="white" data-card="shadow" data-size="default" data-width="fluid" data-loader="enable">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+	<title>SmartAmps Admin Dashboard</title>
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='logo/ICON-removebg.ico')  }}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='logo/ICON-removebg.ico') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fancybox/jquery.fancybox.min.css') }}">
+
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/feather/feather.css') }}">
+
+    <!-- Tabler Icon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/bootstrap/bootstrap-icons.min.css') }}">
+
+    <!-- Tabler Icon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/tabler-icons/tabler-icons.css') }}">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/select2/css/select2.min.css') }}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/all.min.css') }}">
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/flatpickr/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/@simonwep/pickr/themes/nano.min.css') }}">
+
+    <!-- Daterangepikcer CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/daterangepicker/daterangepicker.css') }}">
+
+    <!-- Owl carousel CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}">
+
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/dataTables.bootstrap5.min.css') }}">
+
+    <!-- Player CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/plyr.css') }}">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/owlcarousel/owl.carousel.min.css') }}">
+
+    <!-- Summernote CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/summernote/summernote-lite.min.css') }}">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap-datetimepicker.min.css') }}">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/select2/css/select2.min.css') }}">
+
+    <!-- Dragula CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/dragula/css/dragula.min.css') }}">
+
+    <!-- ChartC3 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/c3-chart/c3.min.css') }}">
+
+    <!-- Bootstrap Tagsinput CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
+
+    <!-- Rangeslider CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/ion-rangeslider/css/ion.rangeSlider.min.css') }}">
+
+    <!-- Morris CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/morris/morris.css') }}">
+
+    <!-- Material CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/material/materialdesignicons.css') }}">
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/pe7/pe-icon-7.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/flatpickr/flatpickr.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/bootstrap-datepicker/bootstrap-datepicker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/jquery-timepicker/jquery-timepicker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/pickr/pickr-themes.css') }}" />
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/typicons/typicons.css') }}">
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/flags/flags.css') }}">
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/weather/weathericons.css') }}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+</head>
+
+
+<body class="bg-white">
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+
+        <div class="container-fuild">
+            <div class="w-100 overflow-hidden position-relative flex-wrap d-block vh-100">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="d-lg-flex align-items-center justify-content-center d-none flex-wrap vh-100 bg-primary-transparent">
+                            <div>
+                                <img src="{{ url_for('static', filename='assets/img/bg/login_bg.jpg') }}" alt="Img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12">
+                        <div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap">
+                            <div class="col-md-7 mx-auto vh-100">
+                                <form action="{{ url_for('user.login_L1_auth') }}" method="POST" class="vh-100">
+                                    <div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
+                                        <div class=" mx-auto text-center">
+                                            <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}" class="img-fluid" alt="Logo">
+                                        </div>
+                                
+                                        <!-- Form Content -->
+                                        <div>
+                                            <div class="text-center mb-3">
+                                                <h1 class="mb-4">Please Select Your Organization to Sign In</h1>
+                                            </div>
+                                
+                                            <!-- Company Selection -->
+                                            <div class="mb-3">
+                                                <label class="form-label">Select Organization Name or ID</label>
+                                                <select name="company_id" id="company_id" class="form-control" required>
+                                                    <option value="">Select Organization Name or ID</option>
+                                                    {% for company in companies %}
+                                                        <option value="{{ company.company_id }}">{{ company.company_name }} ({{ company.company_id }})</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                
+                                            <!-- Remember Me -->
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <div class="form-check form-check-md mb-0">
+                                                    <input class="form-check-input" name="remember_me" id="remember_me" type="checkbox">
+                                                    <label for="remember_me" class="form-check-label mt-0">Remember Me</label>
+                                                </div>
+                                            </div>
+                                
+                                            <!-- Submit Button -->
+                                            <div class="mb-3">
+                                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                                            </div>
+                                        </div>
+                                
+                                        <!-- Footer -->
+                                        <div class="mt-0 pb-4 text-center">
+                                            <p class="mb-0 text-gray-9">&copy; 2025 - SmartAmps</p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    {% include 'user/head_foot/scripts.html' %}
+    
+</body>
+
+</html>

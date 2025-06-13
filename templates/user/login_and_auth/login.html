@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light" data-sidebar="indigo" data-color="primary" data-topbar="bluegradient" data-layout="modern" data-topbarcolor="white" data-card="shadow" data-size="default" data-width="fluid" data-loader="enable">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+	<title>SmartAmps Admin Dashboard</title>
+
+    {% include 'user/style.html' %}
+
+</head>
+
+
+<body class="bg-white">
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+
+        <div class="container-fuild">
+            <div class="w-100 overflow-hidden position-relative flex-wrap d-block vh-100">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="d-lg-flex align-items-center justify-content-center d-none flex-wrap vh-100 bg-primary-transparent">
+                            <div>
+                                <img src="{{ url_for('static', filename='assets/img/bg/login_bg.jpg') }}" alt="Img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12">
+                        <div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap">
+                            <div class="col-md-7 mx-auto vh-100">
+                              <form action="{{ url_for('user.login_user') }}" method="POST" class="vh-100">
+                                    <div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
+                                        <div class=" mx-auto text-center">
+                                            <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}" class="logo-img img-fluid" alt="Logo">
+                                        </div>
+                                        <div class="">
+                                            <div class="text-center mb-3">
+                                                <h3 class="mb-2">You are login with - {{company_id}}</h3>
+                                                <!-- <h2 class="mb-2">Enter your Credintials to Sign In</h2> -->
+                                                <p class="mb-0">Please enter your creditionals to Sign in</p>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Email Address or Employee ID or Username</label>
+                                                <div class="input-group">
+                                                    <input name="username" id="username" type="text" value="" class="form-control border-end-0">
+                                                    <span class="input-group-text border-start-0">
+                                                        <i class="fa-solid fa-user"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Password</label>
+                                                <div class="pass-group">
+                                                    <input name="password" id="password" type="password" class="pass-input form-control">
+                                                    <span class="toggle-password fa-solid fa-eye"></span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="form-check form-check-md mb-0">
+                                                        <input class="form-check-input" name="remember_me" id="remember_me" type="checkbox">
+                                                        <label for="remember_me" class="form-check-label mt-0">Remember Me</label>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <a href="{{ url_for('user.forgot_password')  }}" class="link-danger">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                                            </div>
+                                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                            {% if messages %}
+                                              {% for category, message in messages %}
+                                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                                  {{ message }}
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                              {% endfor %}
+                                            {% endif %}
+                                          {% endwith %}
+                                        </div>
+                                        <div class="mt-5 pb-4 text-center">
+                                            <p class="mb-0 text-gray-9">Copyright &copy; 2025 - SmartAmps</p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    {% include 'user/head_foot/scripts.html' %}
+
+    
+</body>
+
+</html>

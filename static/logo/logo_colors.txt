@@ -1,0 +1,5 @@
+Text Color Primary - #505050
+Background Primary - #F9F9F9
+Background Secondary - #000000
+Text Color Secondary - #F9F9F9
+

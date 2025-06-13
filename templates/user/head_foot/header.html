@@ -1,0 +1,680 @@
+
+
+<!-- Header -->
+<div class="header">
+    <div class="main-header">
+
+        <div class="header-left">
+            <a href="{{ url_for('user.dashboard') }}" class="logo">
+                <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}" alt="Logo">
+            </a>
+            <a href="{{ url_for('user.dashboard') }}" class="dark-logo">
+                <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}" alt="Logo">
+            </a>
+        </div>
+
+        <a id="mobile_btn" class="mobile_btn" href="#sidebar">
+            <span class="bar-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </a>
+
+        <div class="header-user">
+            <div class="nav user-menu nav-list">
+
+                <div class="me-auto d-flex align-items-center" id="header-search">
+                    <a id="toggle_btn" href="javascript:void(0);" class="btn btn-menubar me-1">
+                        <i class="ti ti-arrow-bar-to-left"></i>
+                    </a>
+                    <!-- Search -->
+                    <div class="input-group input-group-flat d-inline-flex me-1">
+                        <span class="input-icon-addon">
+                            <i class="ti ti-search"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search in HRMS">
+                        <span class="input-group-text">
+                            <kbd>CTRL + / </kbd>
+                        </span>
+                    </div>
+                    <!-- /Search -->
+                    <div class="dropdown crm-dropdown">
+                        <a href="#" class="btn btn-menubar me-1" data-bs-toggle="dropdown">
+                            <i class="ti ti-layout-grid"></i>
+                        </a>
+
+                        <!-- <Quick Links Dropdown> -->
+
+                        <div class="dropdown-menu dropdown-lg dropdown-menu-start">
+                            <div class="card mb-0 border-0 shadow-none">
+                                <div class="card-header">
+                                    <h4>Quick Links - HRMS</h4>
+                                </div>
+                                <div class="card-body pb-1">		
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href="#employee-directory" class="d-flex align-items-center justify-content-between p-2 hrms-link mb-3">
+                                                <span class="d-flex align-items-center me-3">
+                                                    <i class="ti ti-users text-primary me-2"></i>Employee Directory
+                                                </span>
+                                                <i class="ti ti-arrow-right"></i>
+                                            </a>							
+                                            <a href="#attendance-tracker" class="d-flex align-items-center justify-content-between p-2 hrms-link mb-3">
+                                                <span class="d-flex align-items-center me-3">
+                                                    <i class="ti ti-calendar-time text-primary me-2"></i>Attendance
+                                                </span>
+                                                <i class="ti ti-arrow-right"></i>
+                                            </a>								
+                                            <a href="#leave-requests" class="d-flex align-items-center justify-content-between p-2 hrms-link mb-3">
+                                                <span class="d-flex align-items-center me-3">
+                                                    <i class="ti ti-beach text-primary me-2"></i>Leave Requests
+                                                </span>
+                                                <i class="ti ti-arrow-right"></i>
+                                            </a>		
+                                        </div>
+                                        <div class="col-sm-6">							
+                                            <a href="#payroll-management" class="d-flex align-items-center justify-content-between p-2 hrms-link mb-3">
+                                                <span class="d-flex align-items-center me-3">
+                                                    <i class="ti ti-wallet text-primary me-2"></i>Payroll
+                                                </span>
+                                                <i class="ti ti-arrow-right"></i>
+                                            </a>								
+                                            <a href="#recruitment" class="d-flex align-items-center justify-content-between p-2 hrms-link mb-3">
+                                                <span class="d-flex align-items-center me-3">
+                                                    <i class="ti ti-briefcase text-primary me-2"></i>Recruitment
+                                                </span>
+                                                <i class="ti ti-arrow-right"></i>
+                                            </a>								
+                                            <a href="#training-development" class="d-flex align-items-center justify-content-between p-2 hrms-link mb-3">
+                                                <span class="d-flex align-items-center me-3">
+                                                    <i class="ti ti-school text-primary me-2"></i>Training
+                                                </span>
+                                                <i class="ti ti-arrow-right"></i>
+                                            </a>		
+                                        </div>
+                                    </div>		
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- </Quick Links Dropdown> -->
+
+                    </div>
+                    <a href="#profile-settings" class="btn btn-menubar">
+                        <i class="ti ti-settings-cog"></i>
+                    </a>	
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <div class="me-1">
+                        <a href="#" class="btn btn-menubar btnFullscreen">
+                            <i class="ti ti-maximize"></i>
+                        </a>
+                    </div>
+                    <div class="dropdown me-1">
+                        <a href="#" class="btn btn-menubar" data-bs-toggle="dropdown">
+                            <i class="ti ti-layout-grid-remove"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="card mb-0 border-0 shadow-none">
+                                <div class="card-header">
+                                    <h4>Applications</h4>
+                                </div>
+                                <div class="card-body">											
+                                    <a href="#calendar" class="d-block pb-2">
+                                        <span class="avatar avatar-md bg-transparent-dark me-2"><i class="ti ti-calendar text-gray-9"></i></span>Calendar
+                                    </a>										
+                                    <a href="#todo" class="d-block py-2">
+                                        <span class="avatar avatar-md bg-transparent-dark me-2"><i class="ti ti-subtask text-gray-9"></i></span>To Do
+                                    </a>										
+                                    <a href="#notes" class="d-block py-2">
+                                        <span class="avatar avatar-md bg-transparent-dark me-2"><i class="ti ti-notes text-gray-9"></i></span>Notes
+                                    </a>										
+						
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="me-1">
+                        <a href="#chat" class="btn btn-menubar position-relative">
+                            <i class="ti ti-brand-hipchat"></i>
+                            <span class="badge bg-info rounded-pill d-flex align-items-center justify-content-center header-badge">5</span>
+                        </a>
+                    </div>
+                    <div class="me-1">
+                        <a href="#email" class="btn btn-menubar">
+                            <i class="ti ti-mail"></i>
+                        </a>
+                    </div>
+                    <div class="me-1 notification_item">
+                        <a href="#" class="btn btn-menubar position-relative me-1" id="notification_popup" data-bs-toggle="dropdown">
+                            <i class="ti ti-bell"></i>
+                            <span class="notification-status-dot"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown p-4">
+                            <div class="d-flex align-items-center justify-content-between border-bottom p-0 pb-3 mb-3">
+                                <h4 class="notification-title">Notifications (2)</h4>
+                                <div class="d-flex align-items-center">
+                                    <a href="#" class="text-primary fs-15 me-3 lh-1">Mark all as read</a>
+                                    <div class="dropdown">
+                                        <a href="javascript:void(0);" class="bg-white dropdown-toggle" data-bs-toggle="dropdown">
+                                            <i class="ti ti-calendar-due me-1"></i>Today
+                                        </a>
+                                        <ul class="dropdown-menu mt-2 p-3">
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item rounded-1">
+                                                    This Week
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item rounded-1">
+                                                    Last Week
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item rounded-1">
+                                                    Last Month
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="noti-content">
+                                <div class="d-flex flex-column">
+                                    <div class="border-bottom mb-3 pb-3">
+                                        <a href="#activity">
+                                            <div class="d-flex">
+                                                <span class="avatar avatar-lg me-2 flex-shrink-0">
+                                                    <img src="{{ url_for('static', filename='assets/img/profiles/avatar-02.jpg')  }}" alt="Profile">
+                                                </span>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-1"><span class="text-dark fw-semibold">Shawn</span>
+                                                        performance in Math is below the threshold.</p>
+                                                    <span>Just Now</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="border-bottom mb-3 pb-3">
+                                        <a href="#activity" class="pb-0">
+                                            <div class="d-flex">
+                                                <span class="avatar avatar-lg me-2 flex-shrink-0">
+                                                    <img src="{{ url_for('static', filename='assets/img/profiles/avatar-23.jpg')  }}" alt="Profile">
+                                                </span>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-1"><span class="text-dark fw-semibold">Sylvia</span> added
+                                                        appointment on 02:00 PM</p>
+                                                    <span>10 mins ago</span>
+                                                    <div class="d-flex justify-content-start align-items-center mt-1">
+                                                        <span class="btn btn-light btn-sm me-2">Deny</span>
+                                                        <span class="btn btn-primary btn-sm">Approve</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="border-bottom mb-3 pb-3">
+                                        <a href="#activity">
+                                            <div class="d-flex">
+                                                <span class="avatar avatar-lg me-2 flex-shrink-0">
+                                                    <img src="{{ url_for('static', filename='assets/img/profiles/avatar-25.jpg')  }}" alt="Profile">
+                                                </span>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-1">New student record <span class="text-dark fw-semibold"> George</span> is created by <span class="text-dark fw-semibold">Teressa</span></p>
+                                                    <span>2 hrs ago</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="border-0 mb-3 pb-0">
+                                        <a href="#activity">
+                                            <div class="d-flex">
+                                                <span class="avatar avatar-lg me-2 flex-shrink-0">
+                                                    <img src="{{ url_for('static', filename='assets/img/profiles/avatar-01.jpg')  }}" alt="Profile">
+                                                </span>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-1">A new teacher record for <span class="text-dark fw-semibold">Elisa</span> </p>
+                                                    <span>09:45 AM</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex p-0">
+                                <a href="#" class="btn btn-light w-100 me-2">Cancel</a>
+                                <a href="#activity" class="btn btn-primary w-100">View All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown profile-dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+                            <span class="avatar avatar-sm online">
+                                <img src="{{ url_for('static', filename='assets/img/profiles/avatar-12.jpg')  }}" alt="Img" class="img-fluid rounded-circle">
+                            </span>
+                        </a>
+                        <div class="dropdown-menu shadow-none">
+                            <div class="card mb-0">
+                                <div class="card-header">
+                                    <div class="d-flex align-items-center">
+                                        <span class="avatar avatar-lg me-2 avatar-rounded">
+                                            <img src="{{ url_for('static', filename='assets/img/profiles/avatar-12.jpg')  }}" alt="img">
+                                        </span>
+                                        <div>
+                                            <h5 class="mb-0">Kevin Larry</h5>
+                                            <p class="fs-12 fw-medium mb-0">warren@example.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="#profile">
+                                        <i class="ti ti-user-circle me-1"></i>My Profile
+                                    </a>
+                                    <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="#bussiness-settings">
+                                        <i class="ti ti-settings me-1"></i>Settings
+                                    </a>
+                                    <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="#security-settings">
+                                        <i class="ti ti-status-change me-1"></i>Status
+                                    </a>
+                                    <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="#profile-settings">
+                                        <i class="ti ti-circle-arrow-up me-1"></i>My Account
+                                    </a>
+                                    <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="#knowledgebase">
+                                        <i class="ti ti-question-mark me-1"></i>Knowledge Base
+                                    </a>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="#login">
+                                        <i class="ti ti-login me-2"></i>Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="dropdown mobile-user-menu">
+            <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+            <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="#profile">My Profile</a>
+                <a class="dropdown-item" href="#profile-settings">Settings</a>
+                <a class="dropdown-item" href="#login">Logout</a>
+            </div>
+        </div>
+        <!-- /Mobile Menu -->
+
+    </div>
+
+</div>
+<!-- /Header -->
+
+
+
+<!-- Sidebar -->
+
+<div class="sidebar" id="sidebar">
+    <!-- Logo -->
+    <div class="sidebar-logo">
+        <a href="{{ url_for('user.dashboard') }}" class="logo logo-normal">
+            <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}" alt="Logo">
+        </a>
+        <a href="{{ url_for('user.dashboard') }}" class="logo-small">
+            <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}" alt="Logo">
+        </a>
+        <a href="{{ url_for('user.dashboard') }}" class="dark-logo">
+            <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}" alt="Logo">
+        </a>
+    </div>
+    <!-- /Logo -->
+    <div class="modern-profile p-3 pb-0">
+        
+        <div class="text-center rounded bg-light p-3 mb-4 user-profile">
+            <div class="avatar avatar-lg online mb-3"> 
+                <img src="{{ url_for('static', filename='assets/img/profiles/avatar-02.jpg') }}" alt="Img" class="img-fluid rounded-circle">
+            </div>
+            <h6 class="fs-12 fw-normal mb-1">Adrian Herman</h6>
+            <p class="fs-10">System Admin</p>
+        </div>
+        
+        <div class="sidebar-nav mb-3">
+            <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded nav-justified bg-transparent" role="tablist">
+                <li class="nav-item"><a class="nav-link active border-0" href="#">Menu</a></li>
+                <li class="nav-item"><a class="nav-link border-0" href="#chat">Chats</a></li>
+                <li class="nav-item"><a class="nav-link border-0" href="#email">Inbox</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar-header p-3 pb-0 pt-2">
+        <div class="text-center rounded bg-light p-2 mb-4 sidebar-profile d-flex align-items-center">
+            <div class="avatar avatar-md onlin">
+                <img src="{{ url_for('static', filename='assets/img/profiles/avatar-02.jpg') }}" alt="Img" class="img-fluid rounded-circle">
+            </div>
+            <div class="text-start sidebar-profile-info ms-2">
+                <h6 class="fs-12 fw-normal mb-1">Adrian Herman</h6>
+                <p class="fs-10">Super Admin</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slimScrollDiv" style="position: relative; width: 100%; height: 667px;">
+        <div class="sidebar-inner slimscroll" style="width: 100%; height: 635px;">
+            <div id="sidebar-menu" class="sidebar-menu">
+
+                <ul>
+
+                    <li class="menu-title"><span>MAIN MENU</span></li>
+                    <li>
+                        <ul>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="active subdrop">
+                                    <i class="ti ti-smart-home"></i>
+                                    <span>Dashboard</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="{{ url_for('user.dashboard') }}" class="">Admin Dashboard</a></li>
+                                    <li><a href="#employee-dashboard" class="active">Employee Dashboard</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-layout-grid-add"></i><span>Applications</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#chat" class="">Chat</a></li>
+                                    <li class="submenu submenu-two">
+                                        <a href="#call" class="">Calls<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#voice-call" class="">Voice Call</a></li>
+                                            <li><a href="#video-call" class="">Video Call</a></li>
+                                            <li><a href="#outgoing-call" class="">Outgoing Call</a></li>
+                                            <li><a href="#incoming-call" class="">Incoming Call</a></li>
+                                            <li><a href="#call-history" class="">Call History</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#calendar" class="">Calendar</a></li>
+                                    <li><a href="#email" class="">Email</a></li>
+                                    <li><a href="#todo" class="">To Do</a></li>
+                                    <li><a href="#notes" class="">Notes</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="#" class="">
+                                    <i class="ti ti-user-star"></i><span>Super Admin</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#dashboard" class="">Dashboard</a></li>
+                                    <li><a href="#companies" class="">Companies</a></li>
+                                    <li><a href="#subscription" class="">Subscriptions</a></li>
+                                    <li><a href="#packages" class="">Packages</a></li>
+                                    <li><a href="#purchase-transaction" class="">Purchase Transaction</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="menu-title"><span>HRM</span></li>
+                    <li>
+                        <ul>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-users"></i><span>Employees</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#employees" class="">Employee Lists</a></li>
+                                    <li><a href="#employees-grid" class="">Employee Grid</a></li>
+                                    <li><a href="#employee-details" class="">Employee Details</a></li>
+                                    <li><a href="#departments" class="">Departments</a></li>
+                                    <li><a href="#designations" class="">Designations</a></li>
+                                    <li><a href="#policy" class="">Policies</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-ticket"></i><span>Tickets</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#tickets" class="">Tickets</a></li>
+                                    <li><a href="#ticket-details" class="">Ticket Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a href="#holidays">
+                                    <i class="ti ti-calendar-event"></i><span>Holidays</span>
+                                </a>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-file-time"></i><span>Attendance</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li class="submenu submenu-two">
+                                        <a href="javascript:void(0);" class="">Leaves<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#leaves" class="">Leaves (Admin)</a></li>
+                                            <li><a href="#leaves-employee" class="">Leave (Employee)</a></li>
+                                            <li><a href="#leave-settings" class="">Leave Settings</a></li>												
+                                        </ul>												
+                                    </li>
+                                    <li><a href="#attendance-admin" class="">Attendance (Admin)</a></li>
+                                    <li><a href="#attendance-employee" class="">Attendance (Employee)</a></li>
+                                    <li><a href="#timesheets" class="">Timesheets</a></li>
+                                    <li><a href="#schedule-timing" class="">Shift &amp; Schedule</a></li>
+                                    <li><a href="#overtime" class="">Overtime</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-school"></i><span>Performance</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#performance-indicator" class="">Performance Indicator</a></li>
+                                    <li><a href="#performance-review" class="">Performance Review</a></li>
+                                    <li><a href="#performance-appraisal" class="">Performance Appraisal</a></li>
+                                    <li><a href="#goal-tracking" class="">Goal List</a></li>
+                                    <li><a href="#goal-type" class="">Goal Type</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-edit"></i><span>Training</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#training" class="">Training List</a></li>
+                                    <li><a href="#trainers" class="">Trainers</a></li>
+                                    <li><a href="#training-type" class="">Training Type</a></li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a href="#promotion">
+                                    <i class="ti ti-speakerphone"></i><span>Promotion</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#resignation">
+                                    <i class="ti ti-external-link"></i><span>Resignation</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#termination">
+                                    <i class="ti ti-circle-x"></i><span>Termination</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title"><span>RECRUITMENT</span></li>
+                    <li>
+                        <ul>
+                            <li class="">
+                                <a href="#job-grid">
+                                    <i class="ti ti-timeline"></i><span>Jobs</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#candidates-grid">
+                                    <i class="ti ti-user-shield"></i><span>Candidates</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#refferals">
+                                    <i class="ti ti-ux-circle"></i><span>Referrals</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                        
+                    <li class="menu-title"><span>ADMINISTRATION</span></li>
+                    <li>
+                        <ul>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-cash"></i><span>Assets</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#assets" class="">Assets</a></li>
+                                    <li><a href="#asset-categories" class="">Asset Categories</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-headset"></i><span>Help &amp; Supports</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#knowledgebase" class="">Knowledge Base</a></li>
+                                    <li><a href="#activity" class="">Activities</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-user-star"></i><span>User Management</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#users" class="">Users</a></li>
+                                    <li><a href="#roles-permissions" class="">Roles &amp; Permissions</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-user-star"></i><span>Reports</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li><a href="#expenses-report" class="">Expense Report</a></li>
+                                    <li><a href="#invoice-report" class="">Invoice Report</a></li>
+                                    <li><a href="#payment-report" class="">Payment Report</a></li>
+                                    <li><a href="#project-report" class="">Project Report</a></li>
+                                    <li><a href="#task-report" class="">Task Report</a></li>
+                                    <li><a href="#user-report" class="">User Report</a></li>
+                                    <li><a href="#employee-report" class="">Employee Report</a></li>
+                                    <li><a href="#payslip-report" class="">Payslip Report</a></li>
+                                    <li><a href="#attendance-report" class="">Attendance Report</a></li>
+                                    <li><a href="#leave-report" class="">Leave Report</a></li>
+                                    <li><a href="#daily-report" class="">Daily Report</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="">
+                                    <i class="ti ti-settings"></i><span>Settings</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    <li class="submenu submenu-two">
+                                        <a href="javascript:void(0);" class="">General Settings<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#profile-settings" class="">Profile</a></li>
+                                            <li><a href="#security-settings" class="">Security</a></li>
+                                            <li><a href="#notification-settings" class="">Notifications</a></li>
+                                            <li><a href="#connected-apps" class="">Connected Apps</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="submenu submenu-two">
+                                        <a href="javascript:void(0);" class="">Website Settings<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#bussiness-settings" class="">Business Settings</a></li>
+                                            <li><a href="#seo-settings" class="">SEO Settings</a></li>
+                                            <li><a href="#localization-settings" class="">Localization</a></li>
+                                            <li><a href="#prefixes" class="">Prefixes</a></li>
+                                            <li><a href="#preferences" class="">Preferences</a></li>
+                                            <li><a href="#performance-appraisal" class="">Appearance</a></li>
+                                            <li><a href="#language" class="">Language</a></li>
+                                            <li><a href="#authentication-settings" class="">Authentication</a></li>
+                                            <li><a href="#ai-settings" class="">AI Settings</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="submenu submenu-two">
+                                        <a href="javascript:void(0);" class="">App Settings<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#salary-settings" class="">Salary Settings</a></li>
+                                            <li><a href="#approval-settings" class="">Approval Settings</a></li>
+                                            <li><a href="#invoice-settings" class="">Invoice Settings</a></li>
+                                            <li><a href="#leave-type" class="">Leave Type</a></li>
+                                            <li><a href="#custom-fields" class="">Custom Fields</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="submenu submenu-two">
+                                        <a href="javascript:void(0);" class="">System Settings<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#email-settings" class="">Email Settings</a></li>
+                                            <li><a href="#email-template" class="">Email Templates</a></li>
+                                            <li><a href="#sms-settings" class="">SMS Settings</a></li>
+                                            <li><a href="#sms-template" class="">SMS Templates</a></li>
+                                            <li><a href="#otp-settings" class="">OTP</a></li>
+                                            <li><a href="#gdpr" class="">GDPR Cookies</a></li>
+                                            <li><a href="#maintenance-mode" class="">Maintenance Mode</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="submenu submenu-two">
+                                        <a href="javascript:void(0);" class="">Financial Settings<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#payment-gateways" class="">Payment Gateways</a></li>
+                                            <li><a href="#tax-rates" class="">Tax Rate</a></li>
+                                            <li><a href="#currencies" class="">Currencies</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="submenu submenu-two">
+                                        <a href="javascript:void(0);" class="">Other Settings<span class="menu-arrow inside-submenu"></span></a>
+                                        <ul>
+                                            <li><a href="#custom-css" class="">Custom CSS</a></li>
+                                            <li><a href="#custom-js" class="">Custom JS</a></li>
+                                            <li><a href="#cronjob" class="">Cronjob</a></li>
+                                            <li><a href="#storage-settings" class="">Storage</a></li>
+                                            <li><a href="#ban-ip-address" class="">Ban IP Address</a></li>
+                                            <li><a href="#backup" class="">Backup</a></li>
+                                            <li><a href="#clear-cache" class="">Clear Cache</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+                    
+            </div>
+        </div>
+        <div class="slimScrollBar" style=" display: none; border-radius: 7px; z-index: 99; right: 1px; height: 47.6878px;"></div>
+        <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+    </div>
+
+</div>  
+
+<!-- /Sidebar -->
+
+
