@@ -1,9 +1,4 @@
-flask
-werkzeug
-sqlalchemy
-flask_compress
-re
-functools
-secrets
-contextlib
-urllib
+flask==2.3.3
+werkzeug==2.3.7
+sqlalchemy==2.0.30
+flask_compress==1.14
