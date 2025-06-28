@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Smartamps || Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-style-mode" content="1">
+
+    {% include "auth/head_foot/style.html" %}
+
+<body class="body-area">
+
+    <!-- Content -->
+
+    <div class="authentication-wrapper cover-authentication">
+        <div class="authentication-inner row">
+            <!-- Login image -->
+            <div class="d-none d-md-flex col-lg-7 col-md-6 p-0">
+                <div class="authentication-image d-flex justify-content-center align-items-center">
+                    <img style="border-radius: 10px;" src="{{ url_for('static', filename='logo/png/Smartamps_white.png') }}" alt="image">
+                </div>
+            </div>
+            <!-- Login image -->
+
+            <!-- Login -->
+            <div class="d-flex col-lg-5 col-md-6 col-12 align-items-center">
+                <div class="card__wrapper">
+                    <div class="authentication-top text-center mb-20">
+                        <a href="javascript:;" class="authentication-logo logo-black">
+                            <img src="{{ url_for('static', filename='logo/png/Smartamps_icon_black-removebg-preview.png') }}" alt="logo">
+                        </a>
+                        <a href="javascript:;" class="authentication-logo logo-white">
+                            <img src="{{ url_for('static', filename='logo/png/Smartamps_icon_color-removebg-preview.png') }}" alt="logo">
+                        </a>
+                        <h4 class="mb-15">Welcome to Smartamps</h4>
+                        <p class="mb-15">Please sign-in to your account</p>
+                    </div>
+                    <form class="" action="{{ url_for('auth_bp.login') }}", method="POST">
+
+                        <div class="from__input-box">
+                            <div class="form__input-title">
+                                <label for="nameEmail">Username</label>
+                            </div>
+                            <div class="form__input">
+                                <input class="form-control" name="username" id="username" type="text" required>
+                            </div>
+                        </div>
+                        <div class="from__input-box">
+                            <div class="form__input-title d-flex justify-content-between">
+                                <label for="passwordInput">Password</label>
+                                <a href="{{ url_for('auth_bp.forget_password') }}">
+                                    <small>Forgot Password?</small>
+                                </a>
+                            </div>
+                            <div class="form__input">
+                                <input class="form-control" type="password" name="password" id="passwordInput" required>
+                                <div class="pass-icon" id="passwordToggle"><i
+                                        class="fa-sharp fa-light fa-eye-slash"></i></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember-me" name="remember-me">
+                                <label class="form-check-label" for="remember-me" name="remember-me">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary w-100" type="submit">Sign in</button>
+                        </div>
+                        <div class="mb-3">
+                            <a href="{{url_for('website_bp.index')}}" class="btn btn-primary w-100" type="submit">Back To Home</a>
+                        </div>
+
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} text-center" role="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- /Login -->
+        </div>
+    </div>
+
+    <!-- / Content -->
+
+    <!-- Back to top start -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Back to top end -->
+
+    <!-- JS here -->
+
+    {% include "auth/head_foot/scripts.html" %}
+
+</body>
+
+</html>

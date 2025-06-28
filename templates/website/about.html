@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% include('website/header.html') %}
+
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Smartamps HRMS</h1>
+            <p>Revolutionizing HR management since 2025</p>
+        </div>
+    </section>
+
+    <section class="about-content">
+        <div class="container">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Founded in 2025, Smartamps HRMS began with a simple mission: to make HR management easier, 
+                    more efficient, and more accessible for businesses of all sizes. What started as a small team of 
+                    HR professionals and tech enthusiasts has grown into a leading provider of HR management solutions.</p>
+                
+                <h2>Our Mission</h2>
+                <p>To empower organizations with intuitive, comprehensive HR tools that save time, 
+                    reduce paperwork, and provide valuable insights into workforce management.</p>
+                
+                <h2>Our Values</h2>
+                <ul>
+                    <li>Innovation in HR technology</li>
+                    <li>Customer-centric solutions</li>
+                    <li>Data security and privacy</li>
+                    <li>Continuous improvement</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='frontend_assets/assets/images/about-us.png') }}" alt="Smartamps Team">
+            </div>
+        </div>
+    </section>
+
+    {% include('website/footer.html') %}
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include('website/header.html') %}
+</head>
+
+<body>
+
+    <!-- Contact Us Section -->
+<section class="contact-section">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>Have questions? We're here to help!</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-card">
+                    <i class="icon-email"></i>
+                    <h3>Email Us</h3>
+                    <p>info@smartamps.in</p>
+                </div>
+                <div class="info-card">
+                    <i class="icon-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>+91 9354396784</p>
+                </div>
+                <div class="info-card">
+                    <i class="icon-location"></i>
+                    <h3>Visit Us</h3>
+                    <p>House no 241/248 Nagar Streets Gali no 17, Illhabash Phase 2 Noida Sector - 86 201301 UP</p>
+                </div>
+            </div>
+            
+            <form class="contact-form" method="POST" action="{{ url_for('website_bp.contact') }}">
+                
+                <div class="form-group">
+                    <label for="name">Full Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message*</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    {% include('website/footer.html') %}
+
+</body>
+
+</html>

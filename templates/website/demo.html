@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% include('website/header.html') %}
+
+    <section class="demo-hero">
+        <div class="container">
+            <h1>See Smartamps HRMS in Action</h1>
+            <p>Schedule a personalized demo to see how our solution can work for you.</p>
+        </div>
+    </section>
+
+    <section class="demo-form-section">
+        <div class="container">
+            <div class="demo-form">
+                <h2>Request a Demo</h2>
+                <form id="demoForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="demo-email">Email</label>
+                        <input type="email" id="demo-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="employees">Number of Employees</label>
+                        <select id="employees" name="employees">
+                            <option value="1-50">1-50</option>
+                            <option value="1-50">51-100</option>
+                            <option value="51-200">101-200</option>
+                            <option value="201-500">201-500</option>
+                            <option value="500+">500+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Specific Needs/Questions</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Request Demo</button>
+                </form>
+            </div>
+            <div class="demo-info">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li>30-45 minute personalized walkthrough</li>
+                    <li>See features most relevant to your needs</li>
+                    <li>Q&A with our HRMS experts</li>
+                    <li>No obligation or sales pressure</li>
+                </ul>
+                <div class="demo-contact">
+                    <p>Prefer to talk now?</p>
+                    <p>Call us at <strong>+91 9354396784</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include('website/footer.html') %}
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% include('website/header.html') %}
+
+    <section class="team-hero">
+        <div class="container">
+            <h1>Meet Our Team</h1>
+            <p>The passionate professionals behind Smartamps HRMS</p>
+        </div>
+    </section>
+
+    <section class="team-members">
+        <div class="container">
+            <div class="member-card">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQG4UnZUHoATRQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718263033909?e=1756339200&v=beta&t=anbJorOUJSEpcjQNNtmjIG6iqddXcp0R1FLymWV95sw" alt="Preet Dobriyal">
+                <h3>Preet Dobriyal</h3>
+                <p class="position">CEO & Founder</p>
+                <p>Preet leads SmartAmps with a strong vision in AI-driven HR automation, digital transformation, and
+                    product innovation.</p>
+            </div>
+            <div class="member-card">
+                <img src="https://media.licdn.com/dms/image/v2/D5635AQGQqkcYTAppqQ/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1725617068398?e=1751734800&v=beta&t=2LehdZmc03Mn58sL9FVMONR1CPAOIWLeAaoXhqHdfGQ" alt="Shilpi Jain">
+                <h3>Shilpi Jain</h3>
+                <p class="position">Co-Founder</p>
+                <p>Shilpi plays a pivotal role in shaping business strategy, partnerships, and operational scalability
+                    at SmartAmps.</p>
+            </div>
+            <div class="member-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQETmg-RAS0xMA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1694265085187?e=1756339200&v=beta&t=LewImDNpjgM6ewWPcPLqrs2TXoevShBhRFwDmAy6evI" alt="Mukul Tyagi">
+                <h3>Mukul Tyagi</h3>
+                <p class="position">CHRO</p>
+                <p>Mukul drives the people-first strategy, ensuring SmartAmps delivers impactful HR solutions grounded
+                    in real-world challenges.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="join-team">
+        <div class="container">
+            <h2>Want to Join Our Team?</h2>
+            <p>We're always looking for talented individuals to join our growing company.</p>
+            <a href="{{ url_for('website_bp.contact') }}" class="btn-primary">Contact Us</a>
+        </div>
+    </section>
+
+    {% include('website/footer.html') %}
+
+    </body>
+
+</html>

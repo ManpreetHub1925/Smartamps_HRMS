@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% include('website/header.html') %}
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your HR Operations with Smartamps HRMS</h1>
+                <p>The all-in-one HR management solution for modern businesses. Streamline payroll, attendance, leaves and more.</p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('website_bp.demo') }}" class="btn-primary">Request Demo</a>
+                    <a href="{{ url_for('auth_bp.login') }}" class="btn-secondary">Official Login</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='frontend_assets/assets/images/logo/Smartamps_icon_color.png') }}" alt="HRMS Dashboard">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="{{ url_for('static', filename='frontend_assets/assets/images/payroll.png') }}" alt="Payroll">
+                    <h3>Payroll Management</h3>
+                    <p>Automate salary calculations, tax deductions, and payment processing.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="{{ url_for('static', filename='frontend_assets/assets/images/attendance.png') }}" alt="Attendance">
+                    <h3>Attendance Tracking</h3>
+                    <p>Real-time tracking with biometric and mobile check-in options.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="{{ url_for('static', filename='frontend_assets/assets/images/leaves.png') }}" alt="Leave">
+                    <h3>Leave Management</h3>
+                    <p>Streamline leave requests, approvals, and balance tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include('website/footer.html') %}
+
+</body>
+</html>

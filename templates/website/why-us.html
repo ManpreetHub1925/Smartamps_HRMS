@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% include('website/header.html') %}
+
+    <section class="why-hero">
+        <div class="container">
+            <h1>Why Choose Smartamps HRMS</h1>
+            <p>Discover what sets us apart from the competition</p>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <div class="benefit-card">
+                <img src="{{ url_for('static', filename='frontend_assets/assets/images/icon-expertise.png') }}" alt="HR Tech Expertise">
+                <h3>HR Tech Expertise</h3>
+                <p>With over 8 years of focused experience, SmartAmps delivers tailored HR automation and compliance
+                    solutions across industries.</p>
+            </div>
+            <div class="benefit-card">
+                <img src="{{ url_for('static', filename='frontend_assets/assets/images/icon-security-shield.png') }}" alt="Enterprise Security">
+                <h3>Enterprise-Grade Security</h3>
+                <p>We ensure data protection through AES-256 encryption, secured infrastructure, and GDPR-compliant
+                    processes.</p>
+            </div>
+            <div class="benefit-card">
+                <img src="{{ url_for('static', filename='frontend_assets/assets/images/icon-support-headset.png') }}" alt="Dedicated Support">
+                <h3>24×7 Human Support</h3>
+                <p>SmartAmps offers real-time, human-powered support across chat, email, and phone to resolve issues
+                    quickly and personally.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"Smartamps HRMS reduced our payroll processing time by 70%. Highly recommended!"</p>
+                    <p class="client">- Sarah Williams, HR Director at TechCorp</p>
+                </div>
+                <!-- More testimonials would go here -->
+            </div>
+        </div>
+    </section>
+
+    {% include('website/footer.html') %}
+
+    </body>
+
+</html>

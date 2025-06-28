@@ -1,0 +1,6 @@
+flask==2.3.2
+mysql-connector-python==8.0.33
+sqlalchemy==2.0.19
+python-dotenv==1.0.0
+gunicorn==20.1.0
+pandas==2.3.0

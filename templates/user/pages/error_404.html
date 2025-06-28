@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light" data-sidebar="indigo" data-color="primary" data-topbar="bluegradient"
+    data-layout="modern" data-topbarcolor="white" data-card="shadow" data-size="default" data-width="fluid"
+    data-loader="enable">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>SmartAmps Admin Dashboard</title>
+
+
+    {% include 'user/head_foot/style.html' %}
+
+
+<body>
+
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+        <div class="container">
+            <div>
+                <!-- Page Wrapper -->
+                <div class="Page-wrapper">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-8 d-flex justify-content-center align-items-center mx-auto">
+                            <div>
+                                <div class="p-4 text-center">
+                                    <img src="{{ url_for('static', filename='logo/png/Original-removebg.png') }}"
+                                        alt="logo" class="img-fluid">
+                                </div>
+                                <div class="error-images mb-4">
+                                    <img src="{{ url_for('static', filename='assets/img/bg/error-404.svg') }}"
+                                        alt="image" class="img-fluid">
+                                </div>
+                                <div class="text-center">
+                            <div>
+                            <h1 class="mb-3">Oops, something went wrong</h1>
+                            <p class="fs-16 text-center">Error 404 Page not found. Sorry the page you looking
+                                 <br> for doesn’t exist or has been moved
+                            </p>
+                                <div class="d-flex justify-content-center pb-4">
+                                    <div class="d-flex justify-content-center pb-4">
+                                        <a href="{{ url_for('user.dashboard') }}"
+                                            class="btn btn-primary d-flex align-items-center "><i
+                                                class="ti ti-arrow-left me-2"></i>Back to Dashboard</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Wrapper -->
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    {% include 'user/head_foot/scripts.html' %}
+
+</body>
+
+</html>

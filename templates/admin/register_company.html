@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Smarthr - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="Dreams technologies - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>SmartAmps User Login</title>
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='logo/ICON-removebg.ico')  }}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='logo/ICON-removebg.ico') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fancybox/jquery.fancybox.min.css') }}">
+
+    <!-- Feather CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/feather/feather.css') }}">
+
+    <!-- Tabler Icon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/bootstrap/bootstrap-icons.min.css') }}">
+
+    <!-- Tabler Icon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/tabler-icons/tabler-icons.css') }}">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/select2/css/select2.min.css') }}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/all.min.css') }}">
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/flatpickr/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/@simonwep/pickr/themes/nano.min.css') }}">
+
+    <!-- Daterangepikcer CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/daterangepicker/daterangepicker.css') }}">
+
+    <!-- Owl carousel CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}">
+
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/dataTables.bootstrap5.min.css') }}">
+
+    <!-- Player CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/plyr.css') }}">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/owlcarousel/owl.carousel.min.css') }}">
+
+    <!-- Summernote CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/summernote/summernote-lite.min.css') }}">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap-datetimepicker.min.css') }}">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/select2/css/select2.min.css') }}">
+
+    <!-- Dragula CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/dragula/css/dragula.min.css') }}">
+
+    <!-- ChartC3 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/c3-chart/c3.min.css') }}">
+
+    <!-- Bootstrap Tagsinput CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
+
+    <!-- Rangeslider CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/ion-rangeslider/css/ion.rangeSlider.min.css') }}">
+
+    <!-- Morris CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/morris/morris.css') }}">
+
+    <!-- Material CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/material/materialdesignicons.css') }}">
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/pe7/pe-icon-7.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/flatpickr/flatpickr.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/bootstrap-datepicker/bootstrap-datepicker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/jquery-timepicker/jquery-timepicker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/pickr/pickr-themes.css') }}" />
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/typicons/typicons.css') }}">
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/flags/flags.css') }}">
+
+    <!-- Pe7 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/icons/weather/weathericons.css') }}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+</head>
+
+
+<body class="bg-white">
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+
+        <div class="container-fuild">
+            <div class="w-100 overflow-hidden position-relative flex-wrap d-block vh-100">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="login-background position-relative d-lg-flex align-items-center justify-content-center d-none flex-wrap vh-100">
+                            <div class="bg-overlay-img">
+                                <img src="{{ url_for('static', filename='assets/img/bg/bg-01.png') }}" class="bg-1" alt="Img">
+                                <img src="{{ url_for('static', filename='assets/img/bg/bg-02.png') }}" class="bg-2" alt="Img">
+                                <img src="{{ url_for('static', filename='assets/img/bg/bg-03.png') }}" class="bg-3" alt="Img">
+                            </div>
+                            <div class="authentication-card w-100">
+                                <div class="authen-overlay-item border w-100">
+                                    <h1 class="text-white display-1">Empowering people <br> through seamless HR <br> management.</h1>
+                                    <div class="my-4 mx-auto authen-overlay-img">
+                                        <img src="{{ url_for('static', filename='assets/img/bg/authentication-bg-01.png') }}" alt="Img">
+                                    </div>
+                                    <div>
+                                        <p class="text-white fs-20 fw-semibold text-center">Efficiently manage your workforce, streamline <br> operations effortlessly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12">
+                        <div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap">
+                            <div class="col-md-7 mx-auto vh-100">
+
+                                <form method="POST" action="{{ url_for('admin.register_company') }}" class="vh-100">
+
+                                    <div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
+                                        
+                                        <!-- Logo -->
+                                        <div class="mx-auto text-center">
+                                            <img src="{{ url_for('static', filename='logo/png/ICON-removebg.png') }}" class="img-fluid" alt="Logo">
+                                        </div>
+                                
+                                        <!-- Form Content -->
+                                        <div>
+                                            <div class="text-center mb-3">
+                                                <h2 class="mb-2">Register Company</h2>
+                                                <p class="mb-0">Enter your organization details</p>
+                                            </div>
+                                
+                                            <div class="mb-3">
+                                                <label for="company_name" class="form-label">Company Name</label>
+                                                <input type="text" name="company_name" id="company_name" class="form-control" required>
+                                            </div>
+                                
+                                            <div class="mb-3">
+                                                <label for="address" class="form-label">Address</label>
+                                                <input type="text" name="address" id="address" class="form-control" required>
+                                            </div>
+                                
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Phone</label>
+                                                <input type="text" name="phone" id="phone" class="form-control" required>
+                                            </div>
+                                
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" name="email" id="email" class="form-control" required>
+                                            </div>
+                                
+                                            <div class="mb-3">
+                                                <label for="website" class="form-label">Website</label>
+                                                <input type="text" name="website" id="website" class="form-control">
+                                            </div>
+                                
+                                            <div class="mb-3">
+                                                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                            </div>
+                                        </div>
+                                
+                                        <!-- Footer -->
+                                        <div class="mt-5 pb-4 text-center">
+                                            <p class="mb-0 text-gray-9">Copyright &copy; 2025 - SmartAmps</p>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='assets/js/jquery-3.7.1.min.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+
+    <!-- Feather Icon JS -->
+    <script src="{{ url_for('static', filename='assets/js/feather.min.js') }}" type="text/javascript"></script>
+
+    <!-- Slimscroll JS -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+
+    <!-- Summernote JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/summernote/summernote-lite.min.js') }}" type="text/javascript"></script>
+
+    <!-- Color Picker JS -->
+    <script src="{{ url_for('static', filename='assets/js/plyr-js.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/plugins/@simonwep/pickr/pickr.es5.min.js') }}" type="text/javascript"></script>
+
+    <!-- Datatable JS -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/dataTables.bootstrap5.min.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap Tagsinput JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}" type="text/javascript"></script>
+
+    <!-- Owl Carousel -->
+    <script src="{{ url_for('static', filename='assets/plugins/owlcarousel/owl.carousel.min.js') }}" type="text/javascript"></script>
+
+    <!-- Daterangepikcer JS -->
+    <script src="{{ url_for('static', filename='assets/js/moment.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/plugins/daterangepicker/daterangepicker.js') }}" type="text/javascript"></script>
+
+
+    <!-- Fullcalendar JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/fullcalendar/index.global.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/plugins/fullcalendar/calendar-data.js') }}" type="text/javascript"></script>
+
+    <!-- Datetimepicker JS -->
+    <script src="{{ url_for('static', filename='assets/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
+
+    <!-- Select2 JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/select2/js/select2.min.js') }}" type="text/javascript"></script>
+
+    <!-- Theiastickysidebar JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/plugins/theia-sticky-sidebar/ResizeSensor.min.js') }}" type="text/javascript"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js') }}" type="text/javascript"></script>
+
+    <!-- Slimscroll JS -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/theia-sticky-sidebar/ResizeSensor.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}" type="text/javascript"></script>
+
+    <!-- Fancybox JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/fancybox/jquery.fancybox.min.js') }}" type="text/javascript"></script>
+
+    <!-- Chart JS -->
+    <script src="{{ url_for('static', filename='assets/plugins/chartjs/chart.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/plugins/chartjs/chart-data.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='assets/js/email.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/kanban.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/invoice.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/projects.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/add-comments.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/file-manager.js') }}" type="text/javascript"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='assets/js/todo.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/theme-colorpicker.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='assets/js/script.js') }}" type="text/javascript"></script>
+
+
+</body>
+
+</html>

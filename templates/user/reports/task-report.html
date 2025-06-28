@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light" data-sidebar="indigo" data-color="primary" data-topbar="bluegradient" data-layout="modern" data-topbarcolor="white" data-card="shadow" data-size="default" data-width="fluid" data-loader="enable">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+	<title>SmartAmps Admin Dashboard</title>
+
+
+    {% include 'user/head_foot/style.html' %}
+
+
+<body>
+
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+
+    {% include 'user/head_foot/header.html' %}
+
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content">
+
+        <!-- Breadcrumb -->
+        <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+            <div class="my-auto mb-2">
+                <h2 class="mb-1">Task Report</h2>
+                <nav>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <a href="{{ url_for('user.dashboard')}}"><i class="ti ti-smart-home"></i></a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            HR
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Task Report</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="d-flex my-xl-auto right-content align-items-center flex-wrap ">
+                <div class="mb-2">
+                    <div class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                            <i class="ti ti-file-export me-1"></i>Export
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-end p-3">
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-xls me-1"></i>Export as Excel </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="head-icons ms-2">
+                    <a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Collapse" id="collapse-header">
+                        <i class="ti ti-chevrons-up"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /Breadcrumb -->
+        <div class="row">
+
+            <!-- Total Exponses -->
+            <div class="col-lg-6 col-md-6 d-flex">
+                <div class="row flex-fill">
+                    <div class="col-lg-6 col-md-6 d-flex">
+                        <div class="card flex-fill">
+                            <div class="card-body ">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <div>
+                                            <span class="fs-14 fw-normal text-truncate mb-1">Total Tasks</span>
+                                            <h5>800</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="data-attributes">
+                                            <span data-peity="{ &quot;fill&quot;: [&quot;#F26522&quot;, &quot;rgba(67, 87, 133, .09)&quot;], &quot;innerRadius&quot;: 16, &quot;radius&quot;: 32 }" style="display: none;">6/7</span><svg class="peity" height="64" width="64"><path d="M 32 0 A 32 32 0 1 1 6.981392561023043 12.048326340520532 L 19.49069628051152 22.024163170260266 A 16 16 0 1 0 32 16" data-value="6" fill="#F26522"></path><path d="M 6.981392561023043 12.048326340520532 A 32 32 0 0 1 31.999999999999993 0 L 31.999999999999996 16 A 16 16 0 0 0 19.49069628051152 22.024163170260266" data-value="1" fill="rgba(67, 87, 133, .09)"></path></svg>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 d-flex">
+                        <div class="card flex-fill">
+                            <div class="card-body ">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <div>
+                                            <span class="fs-14 fw-normal text-truncate mb-1">Total Tasks</span>
+                                            <h5>800</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="data-attributes">
+                                            <span data-peity="{ &quot;fill&quot;: [&quot;#03C95A&quot;, &quot;rgba(67, 87, 133, .09)&quot;], &quot;innerRadius&quot;: 16, &quot;radius&quot;: 32 }" style="display: none;">4/7</span><svg class="peity" height="64" width="64"><path d="M 32 0 A 32 32 0 1 1 18.115720348238142 60.83100377287741 L 25.05786017411907 46.415501886438705 A 16 16 0 1 0 32 16" data-value="4" fill="#03C95A"></path><path d="M 18.115720348238142 60.83100377287741 A 32 32 0 0 1 31.999999999999993 0 L 31.999999999999996 16 A 16 16 0 0 0 25.05786017411907 46.415501886438705" data-value="3" fill="rgba(67, 87, 133, .09)"></path></svg>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 d-flex">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <div>
+                                            <span class="fs-14 fw-normal text-truncate mb-1">Total Tasks</span>
+                                            <h5>800</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="data-attributes">
+                                            <span data-peity="{ &quot;fill&quot;: [&quot;#FD3995&quot;, &quot;rgba(67, 87, 133, .09)&quot;], &quot;innerRadius&quot;: 16, &quot;radius&quot;: 32 }" style="display: none;">2/7</span><svg class="peity" height="64" width="64"><path d="M 32 0 A 32 32 0 0 1 63.19769318981835 39.12066988660206 L 47.598846594909176 35.56033494330103 A 16 16 0 0 0 32 16" data-value="2" fill="#FD3995"></path><path d="M 63.19769318981835 39.12066988660206 A 32 32 0 1 1 31.999999999999993 0 L 31.999999999999996 16 A 16 16 0 1 0 47.598846594909176 35.56033494330103" data-value="5" fill="rgba(67, 87, 133, .09)"></path></svg>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 d-flex">
+                        <div class="card flex-fill">
+                            <div class="card-body ">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <div>
+                                            <span class="fs-14 fw-normal text-truncate mb-1">Total Tasks</span>
+                                            <h5>800</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="data-attributes">
+                                            <span data-peity="{ &quot;fill&quot;: [&quot;#0DCAF0&quot;, &quot;rgba(67, 87, 133, .09)&quot;], &quot;innerRadius&quot;: 16, &quot;radius&quot;: 32 }" style="display: none;">1/7</span><svg class="peity" height="64" width="64"><path d="M 32 0 A 32 32 0 0 1 57.01860743897696 12.048326340520529 L 44.50930371948848 22.024163170260266 A 16 16 0 0 0 32 16" data-value="1" fill="#0DCAF0"></path><path d="M 57.01860743897696 12.048326340520529 A 32 32 0 1 1 31.999999999999993 0 L 31.999999999999996 16 A 16 16 0 1 0 44.50930371948848 22.024163170260266" data-value="6" fill="rgba(67, 87, 133, .09)"></path></svg>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Total Exponses -->
+
+            <!-- Total Exponses -->
+            <div class="col-lg-6 col-md-6 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-header border-0">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="d-flex align-items-center ">
+                                <span class="me-2"><i class="ti ti-chart-pie text-danger"></i></span>
+                                <h5>Tasks</h5>
+                            </div>
+                            <div class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle btn btn-sm fs-12 btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                                    Office Management App
+                                </a>
+                                <ul class="dropdown-menu  dropdown-menu-end p-2">
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item rounded-1">PRO-001</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item rounded-1">PRO-002</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item rounded-1">PRO-004</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                <div class="position-relative payment-total">
+                                    <div id="task-reports" style="min-height: 187px;"><div id="apexchartsas3tlvt3" class="apexcharts-canvas apexchartsas3tlvt3 apexcharts-theme-" style="width: 220px; height: 187px;"><svg id="SvgjsSvg1001" width="220" height="187" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)"><foreignObject x="0" y="0" width="220" height="187"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml"></div><style type="text/css">
+      .apexcharts-flip-y {
+        transform: scaleY(-1) translateY(-100%);
+        transform-origin: top;
+        transform-box: fill-box;
+      }
+      .apexcharts-flip-x {
+        transform: scaleX(-1);
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+      .apexcharts-legend {
+        display: flex;
+        overflow: auto;
+        padding: 0 10px;
+      }
+      .apexcharts-legend.apx-legend-position-bottom, .apexcharts-legend.apx-legend-position-top {
+        flex-wrap: wrap
+      }
+      .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        flex-direction: column;
+        bottom: 0;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left, .apexcharts-legend.apx-legend-position-top.apexcharts-align-left, .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+        justify-content: flex-start;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
+        justify-content: center;
+      }
+      .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-right, .apexcharts-legend.apx-legend-position-top.apexcharts-align-right {
+        justify-content: flex-end;
+      }
+      .apexcharts-legend-series {
+        cursor: pointer;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+      }
+      .apexcharts-legend-text {
+        position: relative;
+        font-size: 14px;
+      }
+      .apexcharts-legend-text *, .apexcharts-legend-marker * {
+        pointer-events: none;
+      }
+      .apexcharts-legend-marker {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 1px;
+      }
+
+      .apexcharts-legend-series.apexcharts-no-click {
+        cursor: auto;
+      }
+      .apexcharts-legend .apexcharts-hidden-zero-series, .apexcharts-legend .apexcharts-hidden-null-series {
+        display: none !important;
+      }
+      .apexcharts-inactive-legend {
+        opacity: 0.45;
+      }</style></foreignObject><g id="SvgjsG1003" class="apexcharts-inner apexcharts-graphical" transform="translate(18.33333333333333, 0)"><defs id="SvgjsDefs1002"><clipPath id="gridRectMaskas3tlvt3"><rect id="SvgjsRect1004" width="183.33333333333334" height="183.33333333333334" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectBarMaskas3tlvt3"><rect id="SvgjsRect1005" width="189.33333333333334" height="189.33333333333334" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMaskas3tlvt3"><rect id="SvgjsRect1006" width="183.33333333333334" height="183.33333333333334" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskas3tlvt3"></clipPath><clipPath id="nonForecastMaskas3tlvt3"></clipPath></defs><g id="SvgjsG1009" class="apexcharts-pie"><g id="SvgjsG1010" transform="translate(0, 0) scale(1)"><circle id="SvgjsCircle1011" r="66.74471544715448" cx="91.66666666666667" cy="91.66666666666667" fill="transparent"></circle><g id="SvgjsG1012" class="apexcharts-slices"><g id="SvgjsG1013" class="apexcharts-series apexcharts-pie-series" seriesName="Completedx" rel="1" data:realIndex="0"><path id="SvgjsPath1014" d="M 8.235772357723576 91.66666666666666 A 83.4308943089431 83.4308943089431 0 0 1 159.16367801850174 42.627217406297895 L 145.6642757481347 52.43510725837165 A 66.74471544715448 66.74471544715448 0 0 0 24.921951219512195 91.66666666666666 L 8.235772357723576 91.66666666666666 z " fill="rgba(3,201,90,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-pie-area apexcharts-donut-slice-0" index="0" j="0" data:angle="144" data:startAngle="-90" data:strokeWidth="2" data:value="40" data:pathOrig="M 8.235772357723576 91.66666666666666 A 83.4308943089431 83.4308943089431 0 0 1 159.16367801850174 42.627217406297895 L 145.6642757481347 52.43510725837165 A 66.74471544715448 66.74471544715448 0 0 0 24.921951219512195 91.66666666666666 L 8.235772357723576 91.66666666666666 z " stroke="#ffffff"></path></g><g id="SvgjsG1015" class="apexcharts-series apexcharts-pie-series" seriesName="Pending" rel="2" data:realIndex="1"><path id="SvgjsPath1016" d="M 159.16367801850174 42.627217406297895 A 83.4308943089431 83.4308943089431 0 0 1 117.44823086403018 171.01416235951925 L 112.29191802455748 155.14466322094873 A 66.74471544715448 66.74471544715448 0 0 0 145.6642757481347 52.43510725837165 L 159.16367801850174 42.627217406297895 z " fill="rgba(13,202,240,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-pie-area apexcharts-donut-slice-1" index="0" j="1" data:angle="108" data:startAngle="54" data:strokeWidth="2" data:value="30" data:pathOrig="M 159.16367801850174 42.627217406297895 A 83.4308943089431 83.4308943089431 0 0 1 117.44823086403018 171.01416235951925 L 112.29191802455748 155.14466322094873 A 66.74471544715448 66.74471544715448 0 0 0 145.6642757481347 52.43510725837165 L 159.16367801850174 42.627217406297895 z " stroke="#ffffff"></path></g><g id="SvgjsG1017" class="apexcharts-series apexcharts-pie-series" seriesName="Inprogressx" rel="3" data:realIndex="2"><path id="SvgjsPath1018" d="M 117.44823086403018 171.01416235951925 A 83.4308943089431 83.4308943089431 0 0 1 24.16965531483163 140.70611592703546 L 37.66905758519864 130.8982260749617 A 66.74471544715448 66.74471544715448 0 0 0 112.29191802455748 155.14466322094873 L 117.44823086403018 171.01416235951925 z " fill="rgba(255,193,7,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-pie-area apexcharts-donut-slice-2" index="0" j="2" data:angle="72" data:startAngle="162" data:strokeWidth="2" data:value="20" data:pathOrig="M 117.44823086403018 171.01416235951925 A 83.4308943089431 83.4308943089431 0 0 1 24.16965531483163 140.70611592703546 L 37.66905758519864 130.8982260749617 A 66.74471544715448 66.74471544715448 0 0 0 112.29191802455748 155.14466322094873 L 117.44823086403018 171.01416235951925 z " stroke="#ffffff"></path></g><g id="SvgjsG1019" class="apexcharts-series apexcharts-pie-series" seriesName="OnxHoldx" rel="4" data:realIndex="3"><path id="SvgjsPath1020" d="M 24.16965531483163 140.70611592703546 A 83.4308943089431 83.4308943089431 0 0 1 8.235773628448754 91.68122810462846 L 24.921952236092338 91.67831581703611 A 66.74471544715448 66.74471544715448 0 0 0 37.66905758519864 130.8982260749617 L 24.16965531483163 140.70611592703546 z " fill="rgba(171,71,188,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-pie-area apexcharts-donut-slice-3" index="0" j="3" data:angle="36" data:startAngle="234" data:strokeWidth="2" data:value="10" data:pathOrig="M 24.16965531483163 140.70611592703546 A 83.4308943089431 83.4308943089431 0 0 1 8.235773628448754 91.68122810462846 L 24.921952236092338 91.67831581703611 A 66.74471544715448 66.74471544715448 0 0 0 37.66905758519864 130.8982260749617 L 24.16965531483163 140.70611592703546 z " stroke="#ffffff"></path></g></g></g></g><line id="SvgjsLine1021" x1="0" y1="0" x2="183.33333333333334" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1022" x1="0" y1="0" x2="183.33333333333334" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1007" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g><g id="SvgjsG1008" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)"></g></svg><div class="apexcharts-tooltip apexcharts-theme-dark"><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-0" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(3, 201, 90);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-1" style="order: 2;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(13, 202, 240);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-2" style="order: 3;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(255, 193, 7);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div><div class="apexcharts-tooltip-series-group apexcharts-tooltip-series-group-3" style="order: 4;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(171, 71, 188);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div></div></div>
+                                    <div class="task-total-content ">
+                                        <p class="fs-16 fw-normal mb-0">Pending</p>
+                                        <span class="display-3 fs-24 fw-bold text-skyblue">30%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <div class="d-flex task-report-icons">
+                                            <span class="me-2"><i class="ti ti-arrow-badge-right-filled text-success"></i></span>
+                                            <h6 class="fs-16">Completed <span class="fs-14 fw-normal">40%</span></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex task-report-icons">
+                                            <span class="me-2"><i class="ti ti-arrow-badge-right-filled text-skyblue"></i></span>
+                                            <h6 class="fs-16">Pending <span class="fs-14 fw-normal">30 %</span></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex task-report-icons">
+                                            <span class="me-2"><i class="ti ti-arrow-badge-right-filled text-warning"></i></span>
+                                            <h6 class="fs-16">Inprogress  <span class="fs-14 fw-normal">20 %</span></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex task-report-icons">
+                                            <span class="me-2"><i class="ti ti-arrow-badge-right-filled text-purple"></i></span>
+                                            <h6 class="fs-16">On Hold <span class="fs-14 fw-normal">10 %</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Total Exponses -->
+        </div>
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                <h5>Tasks List</h5>
+                <div class="d-flex my-xl-auto right-content align-items-center flex-wrap row-gap-3">
+                    <div class="me-3">
+                        <div class="input-icon-end position-relative">
+                            <input type="text" class="form-control date-range bookingrange" placeholder="dd/mm/yyyy - dd/mm/yyyy">
+                            <span class="input-icon-addon">
+                                <i class="ti ti-chevron-down"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="dropdown me-3">
+                        <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                            Select Priority
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-end p-3">
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Low</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Medium</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">High</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown me-3">
+                        <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                            Select Status
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-end p-3">
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Active</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Inactive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown">
+                            Sort By : Last 7 Days
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-end p-3">
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Ascending</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Desending</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Last Month</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1">Last 7 Days</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="custom-datatable-filter table-responsive">
+                    <table class="table datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="no-sort">
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox" id="select-all">
+                                    </div>
+                                </th>
+                                <th>Task Name</th>
+                                <th>Project Name</th>
+                                <th>Created Date</th>
+                                <th>Due Date</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Patient Appointment Booking</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Hospital Administration
+                                </td>
+                                <td>
+                                    14 Jan 2024
+                                </td>
+                                <td>
+                                    15 Jan 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-success-transparent"><i class="ti ti-point-filled me-1"></i>Low</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Completed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Payment Gateway</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Educational Platform
+                                </td>
+                                <td>
+                                    21 Jan 2024
+                                </td>
+                                <td>
+                                    25 Jan 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-warning-transparent"><i class="ti ti-point-filled me-1"></i>Medium</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-purple d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Inprogress
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Doctor available module</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Clinic Management
+                                </td>
+                                <td>
+                                    20 Feb 2024
+                                </td>
+                                <td>
+                                    22 Feb 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-danger-transparent"><i class="ti ti-point-filled me-1"></i>High</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Completed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Video Conferencing Module</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Chat & Call Mobile App
+                                </td>
+                                <td>
+                                    15 Mar 2024
+                                </td>
+                                <td>
+                                    17 Mar 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-success-transparent"><i class="ti ti-point-filled me-1"></i>Low</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-warning d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>On Hold
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Private Chat Module</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Travel Planning Website
+                                </td>
+                                <td>
+                                    12 Apr 2024
+                                </td>
+                                <td>
+                                    16 Apr 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-danger-transparent"><i class="ti ti-point-filled me-1"></i>High</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Completed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Services List & Grid View</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Service Booking Software
+                                </td>
+                                <td>
+                                    20 May 2024
+                                </td>
+                                <td>
+                                    21 May 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-success-transparent"><i class="ti ti-point-filled me-1"></i>Low</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-skyblue d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Pending
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Car Detail Moodule</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Car & Bike Rental Software
+                                </td>
+                                <td>
+                                    06 Jul 2024
+                                </td>
+                                <td>
+                                    06 Jul 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-warning-transparent"><i class="ti ti-point-filled me-1"></i>Medium</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-purple d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Inprogress
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Location Module</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Food Order App
+                                </td>
+                                <td>
+                                    02 Sep 2024
+                                </td>
+                                <td>
+                                    04 Sep 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-success-transparent"><i class="ti ti-point-filled me-1"></i>Low</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Completed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Hotel List & Grid View</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    Hotel Booking App
+                                </td>
+                                <td>
+                                    15 Nov 2024
+                                </td>
+                                <td>
+                                    15 Nov 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-warning-transparent"><i class="ti ti-point-filled me-1"></i>Medium</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Completed
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-md">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center file-name-icon">
+                                        <h6 class="fw-medium"><a href="#">Warehouse Module</a></h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    POS Admin Software
+                                </td>
+                                <td>
+                                    10 Dec 2024
+                                </td>
+                                <td>
+                                    11 Dec 2024
+                                </td>
+                                <td>
+                                    <span class="badge badge-success-transparent"><i class="ti ti-point-filled me-1"></i>Low</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-skyblue d-inline-flex align-items-center badge-xs">
+                                        <i class="ti ti-point-filled me-1"></i>Pending
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% include 'user/head_foot/footer.html' %}
+
+</div>
+<!-- /Page Wrapper -->
+
+
+</div>
+<!-- /Main Wrapper -->
+
+{% include 'user/head_foot/scripts.html' %}
+
+</body>
+
+</html>

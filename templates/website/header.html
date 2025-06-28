@@ -1,0 +1,33 @@
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartamps HRMS - Modern HR Solutions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='frontend_assets/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='frontend_assets/assets/css/responsive.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='frontend_assets/assets/images/logo/Smartamps_white.png') }}" alt="Smartamps HRMS">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('website_bp.index') }}" class="active">Home</a></li>
+                    <li><a href="{{ url_for('website_bp.about') }}">About</a></li>
+                    <li><a href="{{ url_for('website_bp.team') }}">Team</a></li>
+                    <li><a href="{{ url_for('website_bp.why_us') }}">Why Us</a></li>
+                    <li><a href="{{ url_for('website_bp.contact') }}">Contact</a></li>
+                    <li><a href="{{ url_for('auth_bp.login') }}" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+
