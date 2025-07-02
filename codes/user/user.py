@@ -12,13 +12,33 @@ import re
 from datetime import timedelta
 from functools import wraps
 import random
+from codes.api import *
     
-user_bp = Blueprint('user_bp', __name__)
+user = Blueprint('user', __name__)
 
 engine = create_connections()
 
 
-# @user_bp.route('/', methods=['GET'])
+def loginRequire(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in session and 'role' not in session:
+            flash("Please log in to access this page.", "warning")
+            return redirect(url_for('auth.login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+@user.route('/dashboard-users', methods=['GET'])
+@loginRequire
+def dashboard():
+    
+    employee_id = session['username']
+    
+    user_details=get_user_details(session['username'])
+    
+    return render_template('user/dashboards/admin_dashboard.html', user_details=user_details)
+
+# @user.route('/', methods=['GET'])
 # def index():
 #     """Render Website"""
 #     # return render_template('user/login_and_auth/L1_login.html')
@@ -47,7 +67,7 @@ engine = create_connections()
 
    
 
-# @user_bp.route('/login', methods=['GET'])
+# @user.route('/login', methods=['GET'])
 # def login():
 #     """Render company selection page with active companies"""
 #     try:
@@ -62,7 +82,7 @@ engine = create_connections()
 #         return render_template('user/login_and_auth/L1_login.html', companies=[])
 
 
-# @user_bp.route('/login_L1_auth', methods=['POST'])
+# @user.route('/login_L1_auth', methods=['POST'])
 # def login_L1_auth():
 #     """Validate and store company selection"""
 #     company_id = request.form.get('company_id')
@@ -91,7 +111,7 @@ engine = create_connections()
 #         return redirect(url_for('user.index'))
 
 
-# @user_bp.route('/login_user', methods=['GET', 'POST'])
+# @user.route('/login_user', methods=['GET', 'POST'])
 # @login_required_l1
 # def login_user():
 #     """Handle user authentication (L1)"""
@@ -146,7 +166,7 @@ engine = create_connections()
 #     return render_template('user/login_and_auth/login.html', company_id=company_id)
 
 
-# @user_bp.route('/L2_auth', methods=['GET', 'POST'])
+# @user.route('/L2_auth', methods=['GET', 'POST'])
 # @login_required_l1
 # def L2_auth():
 #     """Handle second factor authentication"""
@@ -174,7 +194,7 @@ engine = create_connections()
 #     return render_template('user/login_and_auth/2fa_auth.html')
 
 
-# @user_bp.route('/resend_otp')
+# @user.route('/resend_otp')
 # @login_required_l1
 # @login_required_l2
 # def resend_otp():
@@ -193,7 +213,7 @@ engine = create_connections()
 #     return local[0] + "****" + local[-1] + "@" + domain
 
 
-# @user_bp.route('/forgot_password', methods=['GET', 'POST'])
+# @user.route('/forgot_password', methods=['GET', 'POST'])
 # @login_required_l1
 # def forgot_password():
 #     company_id = session.get('company_id')
@@ -248,7 +268,7 @@ engine = create_connections()
 #     return render_template("user/login_and_auth/forgot_password.html", step='email')
 
 
-# @user_bp.route('/verify_otp', methods=['POST'])
+# @user.route('/verify_otp', methods=['POST'])
 # @login_required_l1
 # def otp_verify():
 #     entered_otp = ''.join([
@@ -267,7 +287,7 @@ engine = create_connections()
 #         return render_template("user/login_and_auth/forgot_password.html", step='otp')
 
     
-# @user_bp.route('/reset_password', methods=['GET', 'POST'])
+# @user.route('/reset_password', methods=['GET', 'POST'])
 # @login_required_l1
 # def reset_password():
 #     if request.method == 'POST':
@@ -301,7 +321,7 @@ engine = create_connections()
 #     return render_template("user/login_and_auth/forgot_password.html", step='reset')
 
 
-# @user_bp.route('/logout')
+# @user.route('/logout')
 # @login_required_l1
 # @login_required_l2
 # def logout():
@@ -310,7 +330,7 @@ engine = create_connections()
 #     return redirect(url_for('user.login'))
 
 
-# @user_bp.route('/profile')
+# @user.route('/profile')
 # def profile():
 #     username = session.get('username')
 #     company_id = session.get('company_id')
@@ -341,13 +361,13 @@ engine = create_connections()
 #     return render_template('user/login_and_auth/profile.html')
 
 
-# @user_bp.route('/change_password')
+# @user.route('/change_password')
 # def change_password():
 
 #     return render_template('user/login_and_auth/change_password.html')
 
 
-# @user_bp.route('/dashboard')
+# @user.route('/dashboard')
 # @login_required_l1
 # @login_required_l2
 # def dashboard():

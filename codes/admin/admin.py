@@ -10,8 +10,9 @@ from codes.db.db import create_connections
 from flask import current_app
 import re
 from functools import wraps
+from codes.api import *
 
-admin_bp = Blueprint('admin_bp', __name__)
+admin = Blueprint('admin', __name__)
 
 engine = create_connections()
 
@@ -22,30 +23,34 @@ def have_access_(allowed_roles):
             role = session.get('role')  # Assuming role is stored in session
             if role not in allowed_roles:
                 flash('You do not have permission to access this page.', 'danger')
-                return redirect(url_for('admin_bp.home'))  # Or wherever you want
+                return redirect(url_for('admin.home'))  # Or wherever you want
             return f(*args, **kwargs)
         return wrapper
     return decorator
 
-def require_login(f):
+def loginRequire(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if 'username' not in session:
-            flash('You must be logged in to access this page.', 'warning')
-            return redirect(url_for('user_bp.login'))  
+        if 'username' not in session and 'role' not in session:
+            flash("Please log in to access this page.", "warning")
+            return redirect(url_for('auth.login'))
         return f(*args, **kwargs)
     return decorated_function
 
 
-@require_login
-@admin_bp.route('/admin/dashboard')
-def home():
-    return render_template('admin/dashboard.html')
+@loginRequire
+@admin.route('/dashboard-admin', methods=['GET'])
+def dashboard():
+    employee_id = session['username']
+    
+    user_details=get_user_details(session['username'])
+    
+    return render_template('admin/dashboard.html', user_details=user_details)
 
 
-@require_login
+@loginRequire
 @have_access_(['Admin', 'Super_admin']) 
-@admin_bp.route('/admin/register_company', methods=['GET', 'POST'])
+@admin.route('/admin/register_company', methods=['GET', 'POST'])
 def register_company():
     
     if request.method == 'POST':
@@ -156,9 +161,9 @@ def generate_new_emp_code(conn, company_id, company_name):
     return f"{code_prefix}{new_num:05d}" 
 
 
-@require_login
+@loginRequire
 @have_access_(['Admin', 'Super_admin']) 
-@admin_bp.route('/admin/add_user/<company_id>', methods=['GET', 'POST'])
+@admin.route('/admin/add_user/<company_id>', methods=['GET', 'POST'])
 def add_user(company_id):
     if request.method == 'POST':
         conn = engine.connect()

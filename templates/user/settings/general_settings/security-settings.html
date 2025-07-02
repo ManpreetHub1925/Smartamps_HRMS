@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="light" data-sidebar="indigo" data-color="primary" data-topbar="bluegradient"
+    data-layout="modern" data-topbarcolor="white" data-card="shadow" data-size="default" data-width="fluid"
+    data-loader="enable">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+    <meta name="author" content="SmartAmps - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>SmartAmps Admin Dashboard</title>
+
+
+    {% include 'user/head_foot/style.html' %}
+
+
+<body>
+
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+
+        {% include 'user/head_foot/header.html' %}
+
+
+
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+            <div class="content">
+
+                <!-- Breadcrumb -->
+                <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+                    <div class="my-auto mb-2">
+                        <h2 class="mb-1">Settings</h2>
+                        <nav>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ url_for(session.role ~ '.dashboard') }}"><i
+                                            class="ti ti-smart-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    Administration
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="head-icons ms-2">
+                        <a href="javascript:void(0);" class="" data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-original-title="Collapse" id="collapse-header">
+                            <i class="ti ti-chevrons-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- /Breadcrumb -->
+
+                <ul class="nav nav-tabs nav-tabs-solid bg-transparent border-bottom mb-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="ti ti-settings me-2"></i>General Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bussiness-settings"><i class="ti ti-world-cog me-2"></i>Website
+                            Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#salary-settings"><i
+                                class="ti ti-device-ipad-horizontal-cog me-2"></i>App Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#email-settings"><i class="ti ti-server-cog me-2"></i>System
+                            Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#payment-gateways"><i class="ti ti-settings-dollar me-2"></i>Financial
+                            Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#custom-css"><i class="ti ti-settings-2 me-2"></i>Other Settings</a>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-xl-3 theiaStickySidebar">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column list-group settings-list">
+                                    <a href="{{ url_for('auth.profile') }}"
+                                        class="d-inline-flex align-items-center rounded py-2 px-3">Profile Settings</a>
+                                    <a href="{{ url_for('setting.security_settings') }}"
+                                        class="d-inline-flex align-items-center rounded active py-2 px-3"><i
+                                            class="ti ti-arrow-badge-right me-2"></i>Security Settings</a>
+                                    <a href="#notification-settings"
+                                        class="d-inline-flex align-items-center rounded py-2 px-3">Notifications</a>
+                                    <a href="#connected-apps"
+                                        class="d-inline-flex align-items-center rounded py-2 px-3">Connected Apps</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="border-bottom mb-3 pb-3">
+                                    <h4>Security Settings</h4>
+                                </div>
+                                <div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium mb-1">Password</h5>
+                                            <div class="d-flex align-items-center">
+                                                <p class="mb-0 me-2 pe-2 border-end">Set a unique password to protect
+                                                    the account</p>
+                                                <p>Last Changed {{ user_details.user_updated_on.strftime('%d %b %Y %I:%M
+                                                    %p') }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <a href="#" class="btn btn-dark" data-bs-toggle="modal"
+                                                data-bs-target="#passwordModal">Change Pasword</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium mb-1">Two Factor Authentication</h5>
+                                            <p>Receive codes via SMS or email every time you login</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <form method="POST" action="{{ url_for('auth.active_2fector') }}">
+                                                <button type="submit" class="btn btn-dark">
+                                                    {{ 'Enable' if user_details.user_2_fector == 0 else 'Disable' }}
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium d-flex align-items-center mb-1">
+                                                Google Authentication
+                                                {% if user_details.google_auth_enabled %}
+                                                <span
+                                                    class="badge ms-2 bg-outline-success rounded-pill d-flex align-items-center">
+                                                    <i class="ti ti-point-filled me-1 text-success"></i> Connected
+                                                </span>
+                                                {% else %}
+                                                <span
+                                                    class="badge ms-2 bg-outline-danger rounded-pill d-flex align-items-center">
+                                                    <i class="ti ti-point-filled me-1 text-danger"></i> Not Connected
+                                                </span>
+                                                {% endif %}
+                                            </h5>
+                                            <p>Secure your login using Google Authentication.</p>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <form method="POST" action="{{ url_for('auth.toggle_google_auth') }}">
+                                                <div class="form-check form-switch form-check-md">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="toggle_google_auth" onchange="this.form.submit()"
+                                                        role="switch" {% if user_details.google_auth_enabled %}checked{%
+                                                        endif %}>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone Number Verification -->
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium d-flex align-items-center mb-1">
+                                                Phone Number Verification
+                                                {% if user_details.phone %}
+                                                <span><i
+                                                        class="ti ti-discount-check-filled text-success ms-2"></i></span>
+                                                {% else %}
+                                                <span><i class="ti ti-alert-circle-filled text-danger ms-2"></i></span>
+                                                {% endif %}
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <p class="mb-0 me-2 pe-2 border-end">Phone associated with this account
+                                                </p>
+                                                <p>
+                                                    {{ 'Verified: ' + user_details.phone if user_details.phone else 'Not
+                                                    Verified' }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <form method="POST" action="{{ url_for('auth.remove_phone') }}"
+                                                class="d-inline">
+                                                <button type="submit"
+                                                    class="btn btn-outline-light border me-2">Remove</button>
+                                            </form>
+                                            <a href="javascript:void(0);" class="btn btn-dark" data-bs-toggle="modal"
+                                                data-bs-target="#phone_number_change">Change Phone</a>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium d-flex align-items-center mb-1">
+                                                Email Verification
+                                                {% if user_details.email %}
+                                                <span><i
+                                                        class="ti ti-discount-check-filled text-success ms-2"></i></span>
+                                                {% else %}
+                                                <span><i class="ti ti-alert-circle-filled text-danger ms-2"></i></span>
+                                                {% endif %}
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <p class="mb-0 me-2 pe-2 border-end">Email associated with this account
+                                                </p>
+                                                <p>Verified Email:
+                                                    <a href="mailto:{{ user_details.email }}">{{ user_details.email
+                                                        }}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <form method="POST" action="{{ url_for('auth.remove_email') }}"
+                                                class="d-inline">
+                                                <button type="submit"
+                                                    class="btn btn-outline-light border me-2">Remove</button>
+                                            </form>
+                                            <a href="javascript:void(0);" class="btn btn-dark" data-bs-toggle="modal"
+                                                data-bs-target="#email_change">Change Email</a>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium mb-1">Device Management</h5>
+                                            <p>The devices associated with the account</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <a href="#" class="btn btn-dark">Manage</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium mb-1">Account Activity</h5>
+                                            <p>The activities of the account</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <a href="#" class="btn btn-dark">View</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap border-bottom mb-3">
+                                        <div class="mb-3">
+                                            <h5 class="fw-medium mb-1">Deactivate Account</h5>
+                                            <p>This will shutdown your account. Your account will be reactive when you
+                                                sign in again</p>
+                                        </div>
+                                        <div class="mb-3">
+                                            <form method="POST" action="{{ url_for('auth.deactivate_account', username=session['username']) }}"
+                                                onsubmit="return confirm('Are you sure you want to deactivate your account?');">
+                                                <button type="submit" class="btn btn-danger">Deactivate</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap row-gap-3">
+                                        <div>
+                                            <h5 class="fw-medium mb-1">Delete Account</h5>
+                                            <p>Your account will be permanently deleted</p>
+                                        </div>
+                                        <div>
+                                            <a href="#" class="btn btn-dark">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% include 'user/head_foot/footer.html' %}
+
+        </div>
+        <!-- /Page Wrapper -->
+
+        {% include 'user/head_foot/header.html' %}
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- Password Reset Form Hidden -->
+    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" action="{{ url_for('auth.change_password') }}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="passwordModalLabel">Change Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="current_password" class="form-label">Current Password</label>
+                            <input type="password" class="form-control" name="current_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="new_password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" name="new_password" required>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                        <button type="submit" class="btn btn-primary m-2">Update Password</button>
+                        <button type="button" class="btn btn-outline-light border me-3"
+                            data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Phone Number Change Modal -->
+    <div class="modal fade" id="phone_number_change" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" action="{{ url_for('auth.change_phone') }}">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Change Phone Number</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="new_phone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" name="new_phone" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">OTP</label>
+                            <input type="text" class="form-control" name="otp_input" placeholder="Enter OTP if sent"
+                                required>
+                        </div>
+
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                        <button type="submit" class="btn btn-primary m-2">Update Password</button>
+                        <button type="button" class="btn btn-outline-light border me-3"
+                            data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Email Change Modal -->
+    <div class="modal fade" id="email_change" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" action="{{ url_for('auth.change_email') }}">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Change Email</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="new_email" class="form-label">New Email</label>
+                            <input type="email" class="form-control" name="new_email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">OTP</label>
+                            <input type="text" class="form-control" name="otp_input" required>
+                        </div>
+
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                        <button type="submit" class="btn btn-primary m-2">Update Password</button>
+                        <button type="button" class="btn btn-outline-light border me-3"
+                            data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById("change_password_btn").addEventListener("click", function () {
+            const form = document.getElementById("password_form");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        });
+    </script>
+
+
+    {% include 'user/head_foot/scripts.html' %}
+
+</body>
+
+</html>

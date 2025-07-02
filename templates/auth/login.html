@@ -6,10 +6,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Smartamps || Login</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, viewport-fit=cover">
+
     <meta name="theme-style-mode" content="1">
 
-    {% include "auth/head_foot/style.html" %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/vendor/bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/vendor/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/vendor/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/vendor/fontawesome-pro.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/vendor/dropzone.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/plugins/dropify.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/plugins/ion.rangeSlider.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/assets/css/main.css') }}">
 
 <body class="body-area">
 
@@ -20,7 +29,7 @@
             <!-- Login image -->
             <div class="d-none d-md-flex col-lg-7 col-md-6 p-0">
                 <div class="authentication-image d-flex justify-content-center align-items-center">
-                    <img style="border-radius: 10px;" src="{{ url_for('static', filename='logo/png/Smartamps_white.png') }}" alt="image">
+                    <img style="border-radius: 10px; height: 90%;" src="{{ url_for('static', filename='assets/img/bg/login_bg.jpg') }}" alt="image">
                 </div>
             </div>
             <!-- Login image -->
@@ -28,17 +37,17 @@
             <!-- Login -->
             <div class="d-flex col-lg-5 col-md-6 col-12 align-items-center">
                 <div class="card__wrapper">
-                    <div class="authentication-top text-center mb-20">
+                    <div class="authentication-top text-center mb-2">
                         <a href="javascript:;" class="authentication-logo logo-black">
-                            <img src="{{ url_for('static', filename='logo/png/Smartamps_icon_black-removebg-preview.png') }}" alt="logo">
+                            <img src="{{ url_for('static', filename='logo/host/png/smartamps_logo_icon_sm_bg_removed.png') }}" alt="logo">
                         </a>
-                        <a href="javascript:;" class="authentication-logo logo-white">
-                            <img src="{{ url_for('static', filename='logo/png/Smartamps_icon_color-removebg-preview.png') }}" alt="logo">
-                        </a>
-                        <h4 class="mb-15">Welcome to Smartamps</h4>
-                        <p class="mb-15">Please sign-in to your account</p>
+                        <!-- <a href="javascript:;" class="authentication-logo logo-white">
+                            <img src="{{ url_for('static', filename='logo/host/png/smartamps_logo_icon_sm_bg_removed.png') }}" alt="logo">
+                        </a> -->
+                        <h4 class="mb-2">Welcome to Smartamps</h4>
+                        <p class="mb-2">Please sign-in to your account</p>
                     </div>
-                    <form class="" action="{{ url_for('auth_bp.login') }}", method="POST">
+                    <form class="" action="{{ url_for('auth.login') }}", method="POST">
 
                         <div class="from__input-box">
                             <div class="form__input-title">
@@ -51,7 +60,7 @@
                         <div class="from__input-box">
                             <div class="form__input-title d-flex justify-content-between">
                                 <label for="passwordInput">Password</label>
-                                <a href="{{ url_for('auth_bp.forget_password') }}">
+                                <a href="{{ url_for('auth.forgot_password') }}">
                                     <small>Forgot Password?</small>
                                 </a>
                             </div>
@@ -106,7 +115,27 @@
 
     <!-- JS here -->
 
-    {% include "auth/head_foot/scripts.html" %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById("passwordToggle");
+            const input = document.getElementById("passwordInput");
+            const icon = document.getElementById("eyeIcon");
+
+            toggle.addEventListener("click", function () {
+                const isPassword = input.getAttribute("type") === "password";
+                input.setAttribute("type", isPassword ? "text" : "password");
+
+                // Toggle icon class
+                if (isPassword) {
+                    icon.classList.remove("fa-eye-slash");
+                    icon.classList.add("fa-eye");
+                } else {
+                    icon.classList.remove("fa-eye");
+                    icon.classList.add("fa-eye-slash");
+                }
+            });
+        });
+    </script>
 
 </body>
 

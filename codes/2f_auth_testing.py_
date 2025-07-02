@@ -1,0 +1,85 @@
+pip install pyotp qrcode[pil]
+
+
+
+import pyotp
+import qrcode
+import io
+import base64
+from flask import render_template, session
+
+@auth.route('/setup_2fa')
+@loginRequire
+def setup_2fa():
+    username = session['username']
+    
+    # Generate secret
+    secret = pyotp.random_base32()
+
+    # Save secret to DB for the user (in users.otp_secret field)
+    with engine.begin() as conn:
+        conn.execute(
+            text("UPDATE users SET otp_secret = :secret WHERE username = :username"),
+            {'secret': secret, 'username': username}
+        )
+
+    # Generate provisioning URI
+    uri = pyotp.totp.TOTP(secret).provisioning_uri(name=username, issuer_name="YourHRMSApp")
+
+    # Generate QR code
+    qr = qrcode.make(uri)
+    img_io = io.BytesIO()
+    qr.save(img_io, format='PNG')
+    img_io.seek(0)
+    base64_img = base64.b64encode(img_io.getvalue()).decode()
+
+    return render_template('2fa_setup.html', qr_code=base64_img, secret=secret)
+
+
+
+<h3>Scan this QR in Google Authenticator</h3>
+<img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+<p>Or enter manually: <code>{{ secret }}</code></p>
+
+<form method="POST" action="{{ url_for('auth.verify_2fa') }}">
+    <input type="text" name="otp" placeholder="Enter 6-digit code" required>
+    <button type="submit">Verify</button>
+</form>
+
+
+
+
+@auth.route('/verify_2fa', methods=['POST'])
+@loginRequire
+def verify_2fa():
+    otp_input = request.form.get('otp')
+    username = session['username']
+
+    with engine.begin() as conn:
+        result = conn.execute(
+            text("SELECT otp_secret FROM users WHERE username = :username"),
+            {'username': username}
+        ).mappings().fetchone()
+
+    if not result:
+        flash("OTP secret not found", "danger")
+        return redirect(url_for('auth.setup_2fa'))
+
+    otp_secret = result['otp_secret']
+    totp = pyotp.TOTP(otp_secret)
+
+    if totp.verify(otp_input):
+        # Mark 2FA active
+        with engine.begin() as conn:
+            conn.execute(
+                text("UPDATE users SET 2_fector = 1 WHERE username = :username"),
+                {'username': username}
+            )
+        flash("Two-Factor Authentication enabled!", "success")
+        return redirect(url_for('dashboard'))
+    else:
+        flash("Invalid OTP code", "danger")
+        return redirect(url_for('auth.setup_2fa'))
+
+
+

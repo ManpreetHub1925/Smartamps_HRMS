@@ -1,6 +1,9 @@
 from sqlalchemy import inspect, text
 from sqlalchemy.orm import sessionmaker
-from .db_tables import *
+from db_tables import *
+from db import create_connections
+
+engine = create_connections()
 
 
 def setup_database(engine):
@@ -50,7 +53,7 @@ def create_migration_history(engine):
             )
         """))
         conn.commit()
-            
+                   
 
 def run_initial_migrations(engine):
     """Run initial database setup if needed"""
@@ -181,40 +184,40 @@ def run_initial_migrations(engine):
             
             print("Inserted application stages")  
     
-        # if not session.query(Employee).first():
-        #     employee = Employee(
-        #         employee_code="EMP0001", 
-        #         first_name="Super", 
-        #         last_name="Admin", 
-        #         email="superadmin@hireamps.com", 
-        #         phone="1234567890", 
-        #         gender="Other", 
-        #         dob="2000-01-01", 
-        #         department_id=1, 
-        #         designation_id=1,
-        #         reporting_manager_id="EMP0001",  # No manager for superadmin
-        #         address=None, city=None, pincode=None, 
-        #         created_by="EMP0001",  # Will be valid after user is added
-        #         updated_by="EMP0001",
-        #         is_active=True
-        #     )
-        #     session.add(employee)
-        #     session.flush()  # Ensure the insert is registered
+        if not session.query(Employee).first():
+            employee = Employee(
+                employee_code="EMP0001", 
+                first_name="Super", 
+                last_name="Admin", 
+                email="superadmin@hireamps.com", 
+                phone="1234567890", 
+                gender="Other", 
+                dob="2000-01-01", 
+                department_id=1, 
+                designation_id=1,
+                reporting_manager_id="EMP0001",  # No manager for superadmin
+                address=None, city=None, pincode=None, state=None, country=None,
+                created_by="EMP0001",  # Will be valid after user is added
+                updated_by="EMP0001",
+                is_active=True
+            )
+            session.add(employee)
+            session.flush()  # Ensure the insert is registered
             
-        #     if not session.query(Users).first():
-        #         user = Users(
-        #             employee_id="EMP0001",
-        #             username="EMP0001",
-        #             password="superadmin123",
-        #             role=1,
-        #             profile_pic_url=None,
-        #             created_by="EMP0001",
-        #             updated_by="EMP0001",
-        #             is_active=True
-        #         )
-        #         session.add(user)
+            if not session.query(Users).first():
+                user = Users(
+                    employee_id="EMP0001",
+                    username="EMP0001",
+                    password="superadmin123",
+                    role=1,
+                    profile_pic_url=None,
+                    created_by="EMP0001",
+                    updated_by="EMP0001",
+                    is_active=True
+                )
+                session.add(user)
                 
-        #     print("✅ Superadmin employee and user inserted successfully.")
+            print("✅ Superadmin employee and user inserted successfully.")
 
 
         # Record the migration
@@ -235,3 +238,4 @@ def run_initial_migrations(engine):
         session.close()
 
 
+setup_database(engine)

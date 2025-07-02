@@ -38,7 +38,7 @@
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
-                                    <a href="#index"><i
+                                    <a href="{{ url_for(session.role ~'.dashboard') }}"><i
                                             class="ti ti-smart-home"></i></a>
                                 </li>
                                 <li class="breadcrumb-item">
@@ -59,10 +59,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <div class="border-bottom mb-3 pb-3">
-                            <h4>Profile </h4>
+                        <div class="border-bottom mb-3 pb-3 d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">Profile</h4>
+                            <button class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#passwordModal">Change Password</button>
                         </div>
-                        <form action="#profile">
+
+
+                        <form method="POST" enctype="multipart/form-data" action="{{ url_for('auth.profile') }}">
                             <div class="border-bottom mb-3">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -72,7 +76,10 @@
                                                 class="d-flex align-items-center flex-wrap row-gap-3 bg-light w-100 rounded p-3 mb-4">
                                                 <div
                                                     class="d-flex align-items-center justify-content-center avatar avatar-xxl rounded-circle border border-dashed me-2 flex-shrink-0 text-dark frames">
-                                                    <i class="ti ti-photo text-gray-3 fs-16"></i>
+                                                    <img id="profilePreview"
+                                                        src="{{ url_for('static', filename='assets/img/profiles/' ~ (user_details.profile_pic_url if user_details.profile_pic_url else 'avatar-01.jpg')) }}"
+                                                        alt="Profile Preview" class="rounded-circle" width="80"
+                                                        height="80">
                                                 </div>
                                                 <div class="profile-upload">
                                                     <div class="mb-2">
@@ -83,10 +90,12 @@
                                                         <div class="drag-upload-btn btn btn-sm btn-primary me-2">
                                                             Upload
                                                             <input type="file" class="form-control image-sign"
-                                                                multiple="">
+                                                                multiple="" name="profile_photo" accept="image/*"
+                                                                id="profile_photo">
                                                         </div>
-                                                        <a href="javascript:void(0);"
-                                                            class="btn btn-light btn-sm">Cancel</a>
+                                                        <a href="javascript:void(0);" class="btn btn-light btn-sm"
+                                                            id="cancel_upload">Cancel</a>
+
                                                     </div>
 
                                                 </div>
@@ -101,7 +110,9 @@
                                                 <label class="form-label mb-md-0">First Name</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="first_name"
+                                                    value="{{ user_details.first_name if user_details else '' }}"
+                                                    id="first_name" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +122,9 @@
                                                 <label class="form-label mb-md-0">Last Name</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="last_name"
+                                                    value="{{ user_details.last_name if user_details else '' }}"
+                                                    id="last_name" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +134,9 @@
                                                 <label class="form-label mb-md-0">Email</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="email"
+                                                    value="{{ user_details.email if user_details else '' }}" id="email"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +146,63 @@
                                                 <label class="form-label mb-md-0">Phone</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="phone"
+                                                    value="{{ user_details.phone if user_details else '' }}" id="phone"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-bottom mb-3">
+                                <h6 class="mb-3">Departmental Details</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label mb-md-0">Role</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="role"
+                                                    value="{{ user_details.role_name if user_details else '' }}"
+                                                    id="role" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label mb-md-0">Department</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="department"
+                                                    value="{{ user_details.department_name if user_details else '' }}"
+                                                    id="department" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label mb-md-0">Designation</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="designation"
+                                                    value="{{ user_details.designation_name if user_details else '' }}"
+                                                    id="designation" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-md-4">
+                                                <label class="form-label mb-md-0">Reporting Manager Name</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" name="reporting_manager_id"
+                                                    value="{{ user_details.reporting_manager_name ~ ' (' ~ user_details.reporting_manager_id ~ ')' if user_details else '' }}"
+                                                    id="reporting_manager_id" readonly>
+
                                             </div>
                                         </div>
                                     </div>
@@ -146,7 +217,9 @@
                                                 <label class="form-label mb-md-0">Address</label>
                                             </div>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="address"
+                                                    value="{{ user_details.address if user_details else '' }}"
+                                                    id="address" required>
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +229,9 @@
                                                 <label class="form-label mb-md-0">City</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="city"
+                                                    value="{{ user_details.city if user_details else '' }}" id="city"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -167,11 +242,11 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div>
-                                                    <select class="select">
-                                                        <option>Select</option>
-                                                        <option>France</option>
-                                                        <option>India</option>
-                                                        <option>UK</option>
+                                                    <select class="form-select" name="state" id="state" required>
+                                                        <option disabled {% if not user_details or not user_details.state %}selected{% endif %}>Select</option>
+                                                        <option value="UP" {% if user_details and user_details.state == 'UP' %}selected{% endif %}>UP</option>
+                                                        <option value="UK" {% if user_details and user_details.state == 'UK' %}selected{% endif %}>UK</option>
+                                                        <option value="GB Nagar" {% if user_details and user_details.state == 'GB Nagar' %}selected{% endif %}>GB Nagar</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -184,11 +259,9 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div>
-                                                    <select class="select">
-                                                        <option>Select</option>
-                                                        <option>Belgium</option>
-                                                        <option>Turkey</option>
-                                                        <option>Ukraine</option>
+                                                    <select class="select" name="country" id="country" required>
+                                                        <option disabled {% if not user_details or not user_details.country %}selected{% endif %}>Select</option>
+                                                        <option value="India" {% if user_details and user_details.country == 'India' %}selected{% endif %}>India</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -200,13 +273,15 @@
                                                 <label class="form-label mb-md-0">Postal Code</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="pincode"
+                                                    value="{{ user_details.pincode if user_details else '' }}"
+                                                    id="pincode" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="border-bottom mb-3">
+                            <!-- <div class="border-bottom mb-3">
                                 <h6 class="mb-3">Change Password</h6>
                                 <div class="row">
                                     <div class="col-md-4">
@@ -216,7 +291,10 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="pass-group">
-                                                    <input type="password" class="pass-input form-control">
+                                                    <input type="password" class="pass-input form-control"
+                                                        name="current_password"
+                                                        value="{{ user_details.password if user_details else '' }}"
+                                                        id="current_password" required>
                                                     <span class="ti toggle-password ti-eye-off"></span>
                                                 </div>
                                             </div>
@@ -229,7 +307,10 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="pass-group">
-                                                    <input type="password" class="pass-inputs form-control">
+                                                    <input type="password" class="pass-inputs form-control"
+                                                        name="new_password"
+                                                        value="{{ user_details.new_password if user_details else '' }}"
+                                                        id="new_password" required>
                                                     <span class="ti toggle-passwords ti-eye-off"></span>
                                                 </div>
                                             </div>
@@ -242,26 +323,60 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="pass-group">
-                                                    <input type="password" class="pass-inputa form-control">
+                                                    <input type="password" class="pass-inputa form-control"
+                                                        name="confirm_password"
+                                                        value="{{ user_details.confirm_password if user_details else '' }}"
+                                                        id="confirm_password" required>
                                                     <span class="ti toggle-passworda ti-eye-off"></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="d-flex align-items-center justify-content-end">
                                 <button type="button" class="btn btn-outline-light border me-3">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
             </div>
-            <div class="footer d-sm-flex align-items-center justify-content-between border-top bg-white p-3">
-                <p class="mb-0">2014 - 2025 &copy; SmartHR.</p>
-                <p>Designed &amp; Developed By <a href="javascript:void(0);" class="text-primary">Dreams</a></p>
+
+            <!-- Password Reset Form Hidden -->
+            <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="POST" action="{{ url_for('auth.change_password') }}">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="passwordModalLabel">Change Password</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="current_password" class="form-label">Current Password</label>
+                                    <input type="password" class="form-control" name="current_password" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="new_password" class="form-label">New Password</label>
+                                    <input type="password" class="form-control" name="new_password" required>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-end">
+                                <button type="submit" class="btn btn-primary m-2">Update Password</button>
+                                <button type="button" class="btn btn-outline-light border me-3" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+
+            {% include 'user/head_foot/footer.html' %}
+
         </div>
         <!-- /Page Wrapper -->
 
@@ -270,6 +385,38 @@
     <!-- /Main Wrapper -->
 
     {% include 'user/head_foot/scripts.html' %}
+
+    <script>
+        document.getElementById("change_password_btn").addEventListener("click", function () {
+            const form = document.getElementById("password_form");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        });
+    </script>
+
+    <script>
+        document.getElementById("profile_photo").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById("profilePreview");
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById("cancel_upload").addEventListener("click", function () {
+            const fileInput = document.getElementById("profile_photo");
+            const preview = document.getElementById("profilePreview");
+
+            fileInput.value = "";  // clear input
+
+            // Reset to existing image or default
+            preview.src = "{{ url_for('static', filename='assets/img/profiles/' ~ (user_details.profile_pic_url if user_details.profile_pic_url else 'avatar-01.jpg')) }}";
+        });
+    </script>
 
 </body>
 

@@ -78,6 +78,8 @@ class Employee(Base):
     address = Column(Text, nullable=True)
     city = Column(String(100), nullable=True)
     pincode = Column(String(10), nullable=True)
+    state = Column(String(150), nullable=True)
+    country = Column(String(150), nullable=True)
     doj = Column(DateTime, default=dt.utcnow, nullable=False)
     created_by = Column(String(255), ForeignKey('employee.employee_code'), nullable=False)
     updated_by = Column(String(255), ForeignKey('employee.employee_code'), nullable=True)
@@ -128,7 +130,7 @@ class JobsActivity(Base):
     activity_description = Column(Integer, ForeignKey('m_application_stage.id'), nullable=False)
     activity_date = Column(DateTime, default=dt.utcnow, nullable=False)
     performed_by = Column(String(255), ForeignKey('users.username'), nullable=False)
-    
+ 
 
 class SystemConfig(Base):
     __tablename__ = 'system_config'

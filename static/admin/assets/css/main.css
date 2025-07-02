@@ -1,11 +1,14 @@
 /*-----------------------------------------------------------------------------------
 
-    Theme Name: Manez - HRM & CRM HTML5 Dashboard Template
-    Author: Bdevs
-    Support: https://support.bdevs.net
-    Description: Manez - HRM & CRM HTML5 Dashboard Template
+    Theme Name: Smartamps - HRM & CRM 
+    Author: Dataamps
+    Support: 
+    Description: Smartamps - HRM & CRM 
     Version: 1.0
-	Developer: @mazharulislamt2
+	  Developer: @dataamps
+    License: Smartamps - HRM & CRM is a premium product by Dataamps. 
+    You are not allowed to remove the footer credit link.
+    If you want to remove the footer credit link, please contact us at info@dataamps.com
 
 -----------------------------------------------------------------------------------
 
@@ -8676,9 +8679,9 @@ img {
 }
 .authentication-wrapper.cover-authentication .authentication-inner .authentication-image {
   width: 100%;
-  margin: 32px 0 32px 32px;
+  /* margin: 32px 0 32px 32px; */
   height: 100vh;
-  height: calc(100vh - 4rem);
+  /* height: calc(100vh - 4rem); */
   position: relative;
   border-radius: 10px;
 }

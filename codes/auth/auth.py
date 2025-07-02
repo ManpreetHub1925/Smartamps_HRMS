@@ -9,12 +9,13 @@ from werkzeug.security import check_password_hash
 # from codes.routes.manager import manager
 import os
 import sys
-
+from werkzeug.utils import secure_filename
+from codes.api import *
 # from codes.queries import *
 
 engine = create_connections()
 
-auth_bp = Blueprint('auth_bp', __name__)
+auth = Blueprint('auth', __name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
@@ -26,222 +27,409 @@ def loginRequire(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'username' not in session and 'role' not in session:
-            # flash("Please log in to access this page.", "warning")
+            flash("Please log in to access this page.", "warning")
             return redirect(url_for('auth.login'))
         return f(*args, **kwargs)
     return decorated_function
 
 
-@auth_bp.route('/login', methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        remember = request.form.get('remember-me')
+        remember_me = request.form.get('remember-me')
 
-        if username and password:
-            with engine.connect() as conn:
-                result = conn.execute(
-                    text("""select * from v_employee_profile
-                            WHERE username = :username"""),
-                    {'username': username}
-                )
-                user = result.mappings().fetchone()
-                                
-                if user and user['password'] == password:
-                    session.permanent = bool(remember)
-                    session['username'] = user['username']
-                    session['role'] = user['role_name'].lower()
-                                            
-                    if 'username' in session and 'role' in session:
-                        flash("Login successful!", "success")
-                        # print(session['role'])
-                        return redirect(url_for(f"{session['role']}.dashboard"))
-
-                    else:
-                        flash("Unknown role, please contact support.", "danger")
-                    
-                else:
-                    flash("Invalid username or password.", "danger")
-        else:
+        if not username or not password:
             flash("Please enter both username and password.", "warning")
+            return redirect(url_for('auth.login'))
+
+        with engine.connect() as conn:
+            query = text("SELECT * FROM v_employee_profile WHERE username = :username and user_is_active = 1")
+            result = conn.execute(query, {"username": username}).mappings().fetchone()
+
+        if not result:
+            flash('Your Account is deactivated, please contact to you System Administrator.', 'danger')
+            return redirect(request.referrer)
+    
+        if result:
+            if password == result.password:  # ⚠️ Use hashing in production!
+                # ✅ Properly set session
+                session['username'] = result.username
+                session['role'] = result.role_name.lower()
+                session['employee_id'] = result.employee_code
+                session['profile_pic'] = result.profile_pic_url
+
+                session.permanent = True if remember_me else False
+
+                flash("Login successful!", "success")
+                role = result.role_name.lower()
+                return redirect(url_for(f'{role}.dashboard'))
+            else:
+                flash("Invalid password. Please try again.", "danger")
+                return redirect(url_for('auth.login'))
+        else:
+            flash("Username not found. Please check your username.", "danger")
+            return redirect(url_for('auth.login'))
 
     return render_template('auth/login.html')
 
 
-# @auth_bp.route('/logout')
-# def logout():
-#     session.clear()
-#     flash("Logout successful!", "success")
-#     return redirect(url_for('auth.login'))
+@auth.route('/logout')
+@loginRequire
+def logout():
+    session.clear()
+    flash("You have been logged out successfully.", "success")
+    return redirect(url_for('auth.login'))
 
 
+@auth.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email_id = request.form.get('email_id')
+        employee_id = request.form.get('employee_id')
+        if not email_id or not employee_id:
+            flash("Please enter both email and employee ID.", "warning")
+            return redirect(url_for('auth.forgot_password'))
+        with engine.connect() as conn:
+            query = text("SELECT * FROM v_employee_profile WHERE email = :email_id AND employee_code = :employee_id")
+            result = conn.execute(query, {"email_id": email_id, "employee_id": employee_id}).mappings().fetchone()
+        if result:
+            new_generated_password = 'Welcome@123'
+            
+            with engine.connect() as conn:
+                conn.execute(text(''' update users set password = :password where username = :username '''),{'password':new_generated_password, 'username': result.username})
+                conn.commit()
+            
+            # Here you would typically send a password reset link to the user's email.
+            print(f'''
+                
+                subject = "🔐 Password Reset Notification – SmartAmps HRMS"
+                body = f"""\
+                    Dear {result.first_name},
 
-@auth_bp.route('/forget_password', methods=['GET'])
-def forget_password():
-    return render_template('auth/forget_password.html')
+                    We received a request to reset your password for your SmartAmps HRMS account associated with this email address.
+
+                    Your new login credentials are:
+
+                    Username: {result.username}
+                    Temporary Password: {new_generated_password}
+
+                    ⚠️ Important: For your security, please log in using the above credentials and change your password immediately from your profile settings.
+
+                    You can log in here: https://smartamps.in/login
+
+                    If you did not request this change or believe this message was sent in error, please contact our support team immediately at support@smartamps.in.
+
+                    Thank you,
+                    SmartAmps HRMS Team
+                    www.smartamps.in
+                    """
+            '''
+            )
+            
+            flash("Password reset link has been sent to your email.", "success")
+            return redirect(url_for('auth.login'))
+        else:
+            flash("No user found with the provided email and employee ID.", "danger")
+            return redirect(url_for('auth.forgot_password'))
+        
+    return render_template('auth/forgot_password.html')
 
 
+@auth.route('/2fa', methods=['GET', 'POST'])
+@loginRequire
+def two_factor_auth():
+    if request.method == 'POST':
+        code = request.form.get('code')
+        if not code:
+            flash("Please enter the 2FA code.", "warning")
+            return redirect(url_for('auth.two_factor_auth'))
+        # Here you would verify the 2FA code.
+        # For demonstration, we'll assume the code is always valid.
+        session['2fa_verified'] = True
+        flash("2FA verification successful!", "success")
+        return redirect(url_for('auth.login'))
 
-# @auth_bp.route('/reset_password', methods=['GET','POST'])
-# def reset_password():
-#     username = session.get('username')
-#     if not username:
-#         flash("User not logged in!", "error")
-#         return redirect(url_for('auth.login'))
+    return render_template('auth/two_factor_auth.html')
+
+
+@auth.route('/change_password', methods=['POST'])
+@loginRequire
+def change_password():
     
-#     # user_details = get_user_details()
-
-#     with engine.begin() as conn:
-#         result = conn.execute(
-#             text('SELECT password FROM users WHERE username = :username'),
-#             {'username': username}
-#         )
-#         user_record = result.fetchone()
-#         if not user_record:
-#             flash("User not found!", "error")
-#             return redirect(url_for('auth.login'))
-
-#         old_pass_db = user_record[0]
-
-#         if request.method == 'POST':
-#             old_password = request.form.get('old_password')
-#             new_password = request.form.get('new_password')
-#             confirm_password = request.form.get('confirm_password')
-
-#             if old_password != old_pass_db:
-#                 flash('Incorrect Old Password, please check again.', 'error')
-#                 # return render_template('auth/reset_password.html', user_details=user_details)
-
-#             if new_password != confirm_password:
-#                 flash('New Password and Confirm Password do not match.', 'error')
-#                 # return render_template('auth/reset_password.html', user_details=user_details)
-
-#             conn.execute(
-#                 text('UPDATE users SET password = :new_password WHERE username = :username'),
-#                 {'new_password': confirm_password, 'username': username}
-#             )
-#             flash(f'Your password has been reset successfully!', 'success')
-#             return redirect(url_for('auth.login'))
-
-#     # return render_template('auth/reset_password.html', user_details=user_details)
-
-
-# @auth_bp.route('/profile', methods=['GET', 'POST'])
-# @loginRequire
-# def profile():
-#     username = session.get('username')
-#     role = session.get('role')
-
-#     UPLOAD_FOLDER = os.path.join('static', 'imgs', 'users')
-#     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
-#     if request.method == 'POST':
-#         dob = request.form.get('dob')
-#         address = request.form.get('address')
-#         city = request.form.get('city')
-#         pincode = request.form.get('pincode')
-#         phone_number = request.form.get('phone')
-#         image_file = request.files.get('profile_image')
-
-#         with engine.begin() as conn:
-#             emp_row = conn.execute(
-#                 text('SELECT employee_code FROM v_employee_profile WHERE username = :username'),
-#                 {'username': username}
-#             ).mappings().fetchone()
-
-#             if emp_row:
-#                 employee_code = emp_row['employee_code']
-
-#                 # Prepare the update fields
-#                 update_fields = {
-#                     'dob': dob,
-#                     'address': address,
-#                     'city': city,
-#                     'pincode': pincode,
-#                     'phone': phone_number,
-#                     'code': employee_code
-#                 }
-
-#                 # Handle image upload
-#                 if image_file and allowed_file(image_file.filename):
-#                     file_ext = image_file.filename.rsplit('.', 1)[1].lower()
-#                     new_filename = f"{employee_code}_{username}_profile_img.{file_ext}"
-#                     full_path = os.path.join(UPLOAD_FOLDER, new_filename)
-#                     image_file.save(full_path)
-
-#                     # Update user image path
-#                     relative_path = os.path.join('imgs', 'users', new_filename)
-#                     conn.execute(
-#                         text('UPDATE users SET profile_pic_url = :img_path WHERE username = :username'),
-#                         {'img_path': new_filename, 'username': username}
-#                     )
-#                 elif image_file:
-#                     flash("Invalid image. Please upload PNG, JPG, or JPEG.", "danger")
-#                     return redirect(url_for('auth.profile'))
-
-#                 # Execute all updates for employee
-#                 conn.execute(text('''
-#                     UPDATE employee 
-#                     SET dob = :dob, address = :address, city = :city, pincode = :pincode, phone = :phone 
-#                     WHERE employee_code = :code
-#                 '''), update_fields)
-
-#                 flash("Profile updated successfully.", "success")
-#             else:
-#                 flash("Employee not found.", "danger")
-
-#     # return render_template('auth/profile.html',
-#                         #    user_details=get_user_details(),
-#                         #    users_notification=get_notifications())
-
-
-# @auth_bp.route('/master-manager', methods=['GET', 'POST'])
-# @loginRequire
-# def master_manager():
-#     role = session.get('role')
-#     if role not in ['admin', 'superadmin']:
-#         flash('You are not authorized for this action.', 'error')
-#         return redirect(url_for(f"{role}.dashboard"))
-
-#     # user_details = get_user_details()
-
-#     if request.method == 'POST':
-#         form_type = request.form.get('form_type')
-
-#         with engine.begin() as conn:
-#             if form_type == 'department':
-#                 department_name = request.form.get('department_name')
-#                 if department_name:
-#                     conn.execute(text('INSERT INTO m_department (department_name) VALUES (:name)'), {'name': department_name})
-#                     flash('Department added successfully.', 'success')
-
-#             elif form_type == 'designation':
-#                 designation_name = request.form.get('designation_name')
-#                 if designation_name:
-#                     conn.execute(text('INSERT INTO m_designation (designation) VALUES (:name)'), {'name': designation_name})
-#                     flash('Designation added successfully.', 'success')
-
-#             elif form_type == 'role':
-#                 role_name = request.form.get('role_name')
-#                 if role_name:
-#                     conn.execute(text('INSERT INTO m_role (role_name) VALUES (:name)'), {'name': role_name})
-#                     flash('Role added successfully.', 'success')
-
-#     # Fetch updated lists after possible insert
-#     with engine.begin() as conn:
-#         department_list = conn.execute(text('SELECT * FROM m_department')).mappings().fetchall()
-#         designation_list = conn.execute(text('SELECT * FROM m_designation')).mappings().fetchall()
-#         role_list = conn.execute(text('SELECT * FROM m_role')).mappings().fetchall()
-
-#     # return render_template(
-#     #     'setup/master_manage.html',
-#     #     department_list=department_list,
-#     #     designation_list=designation_list,
-#     #     role_list=role_list,
-#     #     user_details=user_details
-#     # )
-
-
+    username = session.get('username')
+    current_password = request.form.get('current_password')
+    new_password = request.form.get('new_password')
     
+    if not current_password or not new_password:
+        flash("Please fill in all fields.", "warning")
+        return redirect(request.url)
+
+    with engine.connect() as conn:
+        query = text("SELECT * FROM users WHERE username = :username")
+        result = conn.execute(query, {"username": username}).mappings().fetchone()
+
+    if result:
+        if new_password == result.password:
+            flash("New password cannot be same as current password.", "warning")
+            return redirect(request.url)
+
+        with engine.begin() as conn:  # better for auto commit
+            update_query = text("UPDATE users SET password = :new_password, updated_on = NOW(), updated_by = :username WHERE username = :username")
+            conn.execute(update_query, {
+                "new_password": new_password,
+                "username": username
+            })
+
+        flash("Password changed successfully! Please log in again.", "success")
+        logout()
+        return redirect(url_for('auth.login'))
+
+    else:
+        flash("Current password is incorrect.", "danger")
+        return redirect(request.url)
+
+
+@auth.route('/active_2fector', methods=['POST'])
+@loginRequire
+def active_2fector():
+    with engine.begin() as conn:
+        result = conn.execute(
+            text("SELECT 2_fector FROM users WHERE username = :username"),
+            {'username': session['username']}
+        ).mappings().fetchone()
+
+        new_status = 0 if result['2_fector'] == 1 else 1
+
+        conn.execute(
+            text("UPDATE users SET 2_fector = :status WHERE username = :username"),
+            {'status': new_status, 'username': session['username']}
+        )
+
+    flash(f"Two-Factor Authentication {'Disabled' if new_status == 0 else 'Enabled'}", 'success')
+    return redirect(request.referrer or request.url)
+    
+
+
+@auth.route('/toggle_google_auth', methods=['POST'])
+@loginRequire
+def toggle_google_auth():
+    username = session['username']
+
+    with engine.begin() as conn:
+        # Toggle value between 1 and 0
+        conn.execute(text('''
+            UPDATE users
+            SET google_auth_enabled = CASE WHEN google_auth_enabled = 1 THEN 0 ELSE 1 END
+            WHERE username = :username
+        '''), {'username': username})
+
+        # Get new value
+        new_status = conn.execute(text('''
+            SELECT google_auth_enabled FROM users WHERE username = :username
+        '''), {'username': username}).scalar()
+
+    flash(
+        f"Google Authentication {'Enabled' if new_status == 1 else 'Disabled'}",
+        "success"
+    )
+    return redirect(request.referrer or request.url)
+
+@auth.route('/remove_phone', methods=['POST'])
+@loginRequire
+def remove_phone():
+    username = session['username']
+    with engine.begin() as conn:
+        conn.execute(
+            text("UPDATE employee SET phone = '' WHERE employee_code = :username"),
+            {"username": username}
+        )
+    flash("Phone number removed successfully.", "success")
+    return redirect(request.referrer or request.url)
+
+@auth.route('/remove_email', methods=['POST'])
+@loginRequire
+def remove_email():
+    username = session['username']
+    with engine.begin() as conn:
+        conn.execute(
+            text("UPDATE employee SET email = '' WHERE employee_code = :username"),
+            {"username": username}
+        )
+    flash("Email removed successfully.", "success")
+    return redirect(request.referrer or request.url)
+
+
+@auth.route('/change_phone', methods=['POST'])
+@loginRequire
+def change_phone():
+    new_phone = request.form.get('new_phone')
+    otp_input = request.form.get('otp_input')
+
+    if not new_phone:
+        flash("Phone number is required.", "warning")
+        return redirect(request.referrer or request.url)
+
+    # OPTIONAL: OTP verification logic placeholder
+    # You can implement actual OTP storage/validation here
+    if otp_input != "123456":  # Replace with real validation
+        flash("Invalid OTP", "danger")
+        return redirect(request.referrer or request.url)
+
+    with engine.begin() as conn:
+        conn.execute(
+            text("UPDATE employee SET phone = :phone WHERE employee_code = :username"),
+            {"phone": new_phone, "username": session['username']}
+        )
+    flash("Phone number updated successfully.", "success")
+    return redirect(request.referrer or request.url)
+
+
+
+@auth.route('/change_email', methods=['POST'])
+@loginRequire
+def change_email():
+    new_email = request.form.get('new_email')
+    otp_input = request.form.get('otp_input')
+
+    if not new_email:
+        flash("Email is required.", "warning")
+        return redirect(request.referrer or request.url)
+
+    # Replace with actual OTP verification logic
+    if otp_input != "123456":
+        flash("Invalid OTP", "danger")
+        return redirect(request.referrer or request.url)
+
+    with engine.begin() as conn:
+        conn.execute(
+            text("""
+                UPDATE employee 
+                SET email = :email, email_verified = 1 
+                WHERE employee_code = :username
+            """),
+            {"email": new_email, "username": session['username']}
+        )
+
+    flash("Email updated and verified successfully.", "success")
+    return redirect(request.referrer or request.url)
+
+
+
+@auth.route('/profile', methods=['GET', 'POST'])
+@loginRequire
+def profile():
+    employee_id = session.get('employee_id')
+
+    user_details = get_user_details(session['username'])
+
+    if request.method == 'POST':
+        email_id = request.form.get('email')
+        phone_no = request.form.get('phone')
+        address = request.form.get('address')
+        city = request.form.get('city')
+        state = request.form.get('state')
+        country = request.form.get('country')
+        postal_code = request.form.get('pincode')
+
+        # Handle profile picture upload
+        profile_pic_file = request.files.get('profile_photo')
+        filename = None
+
+        if profile_pic_file and profile_pic_file.filename:
+            # Generate unique filename
+            file_name_text = f"{user_details.first_name}-{employee_id}"
+            _, ext = os.path.splitext(profile_pic_file.filename)  # ✅ FIXED here
+            filename = secure_filename(f"{file_name_text}{ext.lower()}")
+
+            # Save location
+            upload_dir = os.path.join('static', 'assets', 'img', 'profiles')
+            os.makedirs(upload_dir, exist_ok=True)
+
+            save_path = os.path.join(upload_dir, filename)
+
+            # Save the file
+            profile_pic_file.save(save_path)
+            
+        # Update database
+        with engine.begin() as conn:
+            conn.execute(text(''' 
+                UPDATE employee SET 
+                    email = :email_id, 
+                    phone = :phone_no, 
+                    address = :address, 
+                    city = :city,
+                    state = :state, 
+                    country = :country, 
+                    pincode = :postal_code,
+                    updated_by = :updated_by,
+                    updated_at = NOW()
+                WHERE employee_code = :employee_code
+            '''), {
+                'email_id': email_id,
+                'phone_no': phone_no,
+                'address': address,
+                'city': city,
+                'state': state,
+                'country': country,
+                'postal_code': postal_code,
+                'employee_code': employee_id,
+                'updated_by':employee_id
+            })
+
+            if filename:
+                conn.execute(text('''
+                    UPDATE users SET profile_pic_url = :profile_pic_url 
+                    WHERE employee_id = :employee_id
+                '''), {
+                    'profile_pic_url': filename,
+                    'employee_id': employee_id
+                })
+
+        flash("Profile updated successfully", "success")
+        return redirect(url_for('auth.profile'))
+
+    return render_template('user/pages/profile.html', user_details=user_details)
+
+
+
+@auth.route('/lock_scereen', methods=['GET', 'POST'])
+@loginRequire
+def lock_screen():
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if not password:
+            flash("Please enter your password to unlock.", "warning")
+            return redirect(url_for('auth.lock_screen'))
+        with engine.connect() as conn:
+            query = text("SELECT * FROM users WHERE username = :username")
+            result = conn.execute(query, {"username": session['username']}).fetchone()
+        if result and check_password_hash(result['password'], password):
+            flash("Screen unlocked successfully!", "success")
+            return redirect(url_for('auth.profile'))
+        else:
+            flash("Incorrect password. Please try again.", "danger")
+            return redirect(url_for('auth.lock_screen'))
+    return render_template('auth/lock_screen.html')
+
+
+@auth.route('/deactivate_account/<string:username>', methods=['POST'])
+@loginRequire
+def deactivate_account(username):
+    if session.get('username') != username:
+        flash("Unauthorized request.", "danger")
+        return redirect(request.referrer or url_for('dashboard'))
+
+    with engine.begin() as conn:
+        conn.execute(
+            text("UPDATE users SET is_active = 0 WHERE username = :username"),
+            {'username': username}
+        )
+
+    session.clear()  # Log out user
+    flash("Account has been deactivated.", "success")
+    return redirect(request.referrer)
+
+
 

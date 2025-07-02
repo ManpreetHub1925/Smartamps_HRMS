@@ -1,0 +1,259 @@
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% set category, message = messages[-1] %}
+    <div id="flash-alert" class="custom-flash-alert alert-{{ category }} alert-dismissible fade show" role="alert">
+      <div class="flash-content">
+        <div class="flash-icon">
+          {% if category == 'success' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          {% elif category == 'danger' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          {% elif category == 'warning' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          {% endif %}
+        </div>
+        <div class="flash-text">
+          <h6 class="flash-title">{{ category.capitalize() }}</h6>
+          <p class="flash-message">{{ message }}</p>
+        </div>
+      </div>
+      <button type="button" class="flash-close" data-bs-dismiss="alert" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  {% endif %}
+{% endwith %}
+
+<style>
+  .custom-flash-alert {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: auto;
+    max-width: 90%;
+    min-width: 300px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+    border: none;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  }
+
+  .custom-flash-alert::before {
+    content: '';
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+  }
+
+  .alert-success {
+    background-color: #f6ffed;
+    color: #52c41a;
+  }
+
+  .alert-success::before {
+    background-color: #52c41a;
+  }
+
+  .alert-danger {
+    background-color: #fff2f0;
+    color: #ff4d4f;
+  }
+
+  .alert-danger::before {
+    background-color: #ff4d4f;
+  }
+
+  .alert-warning {
+    background-color: #fffbe6;
+    color: #faad14;
+  }
+
+  .alert-warning::before {
+    background-color: #faad14;
+  }
+
+  .alert-info {
+    background-color: #e6f7ff;
+    color: #1890ff;
+  }
+
+  .alert-info::before {
+    background-color: #1890ff;
+  }
+
+  .flash-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .flash-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .flash-text {
+    line-height: 1.4;
+  }
+
+  .flash-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0 0 2px 0;
+    text-transform: capitalize;
+  }
+
+  .flash-message {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .flash-close {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 15px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    color: inherit;
+  }
+
+  .flash-close:hover {
+    opacity: 1;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: translate(-50%, -20px);
+    }
+  }
+
+  .fade-out {
+    animation: fadeOut 0.4s ease forwards;
+  }
+
+  /* Progress bar */
+  .flash-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .flash-progress::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    animation: progressBar 4s linear forwards;
+  }
+
+  .alert-success .flash-progress::after {
+    background-color: #52c41a;
+  }
+
+  .alert-danger .flash-progress::after {
+    background-color: #ff4d4f;
+  }
+
+  .alert-warning .flash-progress::after {
+    background-color: #faad14;
+  }
+
+  .alert-info .flash-progress::after {
+    background-color: #1890ff;
+  }
+
+  @keyframes progressBar {
+    from { width: 100%; }
+    to { width: 0%; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const flash = document.getElementById('flash-alert');
+    if (flash) {
+      // Add progress bar
+      const progressBar = document.createElement('div');
+      progressBar.className = 'flash-progress';
+      flash.appendChild(progressBar);
+
+      // Timer for auto dismiss
+      const fadeOutTime = 400;
+      const displayTime = 4000;
+
+      let dismissTimer = setTimeout(() => {
+        flash.classList.add('fade-out');
+
+        setTimeout(() => {
+          if (typeof bootstrap !== 'undefined' && bootstrap.Alert) {
+            const bsAlert = bootstrap.Alert.getOrCreateInstance(flash);
+            bsAlert.close();
+          } else {
+            flash.remove();  // Fallback if Bootstrap.Alert is not loaded
+          }
+        }, fadeOutTime);
+      }, displayTime);
+
+      // Pause progress on hover
+      flash.addEventListener('mouseenter', () => {
+        const progress = flash.querySelector('.flash-progress::after');
+        progressBar.style.animationPlayState = 'paused';
+        clearTimeout(dismissTimer);
+      });
+
+      flash.addEventListener('mouseleave', () => {
+        progressBar.style.animationPlayState = 'running';
+        dismissTimer = setTimeout(() => {
+          flash.classList.add('fade-out');
+          setTimeout(() => {  
+            if (typeof bootstrap !== 'undefined' && bootstrap.Alert) {
+              const bsAlert = bootstrap.Alert.getOrCreateInstance(flash);
+              bsAlert.close();
+            } else {
+              flash.remove();
+            }
+          }, fadeOutTime);
+        }, displayTime / 2); // resume halfway
+      });
+    }
+  });
+</script>

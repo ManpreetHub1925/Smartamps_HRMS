@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     {% include('website/header.html') %}
@@ -11,61 +12,116 @@
         </div>
     </section>
 
-    <section class="demo-form-section">
+    <section class="demo-form-section py-5 bg-light">
         <div class="container">
-            <div class="demo-form">
-                <h2>Request a Demo</h2>
-                <form id="demoForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
+            <div class="row align-items-center">
+                <!-- Left Side: Form -->
+                <div class="col-md-7 mb-5 mb-md-0">
+                    <div class="p-4 bg-white shadow rounded-3">
+                        <h2 class="mb-4 text-primary fw-bold">Request a Demo</h2>
+                        <form id="demoForm" method="POST" action="{{ url_for('website_bp.demo') }}">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="company" class="form-label">Company</label>
+                                    <input type="text" class="form-control" id="company" name="company" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="demo-email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="country_code" class="form-label">Country Code</label>
+                                    <select class="form-select" id="country_code" name="country_code" required>
+                                        <option value="+91">IN +91</option>
+                                        <option value="+1">US +1</option>
+                                        <option value="+44">GB +44</option>
+                                        <option value="+61">AU +61</option>
+                                        <option value="+81">JP +81</option>
+                                        <option value="+49">DE +49</option>
+                                        <option value="+33">FR +33</option>
+                                        <option value="+971">AE+971</option>
+                                        <option value="+86">CN +86</option>
+                                        <option value="+7">RU +7</option>
+                                        <option value="+34">ES+34</option>
+                                        <option value="+55">BR +55</option>
+                                        <option value="+82">KR +82</option>
+                                        <option value="+60">MY +60</option>
+                                        <option value="+94">LK +94</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                        placeholder="9876543210">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="employees" class="form-label">Number of Employees</label>
+                                    <select class="form-select" id="employees" name="employees">
+                                        <option value="1-50">1-50</option>
+                                        <option value="51-100">51-100</option>
+                                        <option value="101-200">101-200</option>
+                                        <option value="201-500">201-500</option>
+                                        <option value="500+">500+</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="message" class="form-label">Specific Needs/Questions</label>
+                                    <textarea class="form-control" id="message" name="message" rows="4"
+                                        placeholder="Tell us how we can help..."></textarea>
+                                </div>
+                                <div class="col-12 d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill">📨 Send
+                                        Request</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="demo-email">Email</label>
-                        <input type="email" id="demo-email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="employees">Number of Employees</label>
-                        <select id="employees" name="employees">
-                            <option value="1-50">1-50</option>
-                            <option value="1-50">51-100</option>
-                            <option value="51-200">101-200</option>
-                            <option value="201-500">201-500</option>
-                            <option value="500+">500+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Specific Needs/Questions</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Request Demo</button>
-                </form>
-            </div>
-            <div class="demo-info">
-                <h3>What to Expect</h3>
-                <ul>
-                    <li>30-45 minute personalized walkthrough</li>
-                    <li>See features most relevant to your needs</li>
-                    <li>Q&A with our HRMS experts</li>
-                    <li>No obligation or sales pressure</li>
-                </ul>
-                <div class="demo-contact">
-                    <p>Prefer to talk now?</p>
-                    <p>Call us at <strong>+91 9354396784</strong></p>
                 </div>
+
+                <!-- Right Side: Info Section -->
+                <div class="col-md-5">
+                    <div class="p-4 bg-white rounded-3 shadow-sm h-100 border-start border-3 border-primary">
+                        <h3 class="text-dark fw-bold mb-4">What to Expect</h3>
+                        <ul class="list-unstyled text-muted ps-3 mb-4">
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                30–45 min personalized walkthrough
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Tailored feature preview based on your needs
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Q&A session with product experts
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                No sales pressure — just clear value
+                            </li>
+                        </ul>
+                        <div class="pt-3 border-top">
+                            <p class="fw-semibold mb-1">Prefer to speak now?</p>
+                            <p class="text-primary fs-5 fw-bold mb-0">📞 +91 9354396784</p>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </section>
 
+
+
     {% include('website/footer.html') %}
 
-</body>
+    </body>
+
 </html>
